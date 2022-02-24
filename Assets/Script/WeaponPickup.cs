@@ -31,9 +31,9 @@ public class WeaponPickup : MonoBehaviour
             collision.GetComponent<Player>().currentWeapon = weapon;
             playerWeaponSpriteRenderer.sprite = weapon.currentWeaponSprite;
             // bo vu khi xuong
-             weapon = tempWeapon;
+            weapon = tempWeapon;
             spriteRenderer.sprite = tempSpriteWeapon.sprite;
-            
+
 
 
         }

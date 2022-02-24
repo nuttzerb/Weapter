@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeaponSprite: {fileID: 21300000, guid: 69e0ade04eab5dd42846957789b262f0,
     type: 3}
+  weaponType: 2
+  damage: 2
   bulletPrefab: {fileID: 447421776574431171, guid: 07fa0a9fb29ab7145add73214b20df3d,
     type: 3}
   bullet: {fileID: 0}
   fireRate: 0.2
-  damage: 20
+  attackRange: 0
+  arrowPrefab: {fileID: 0}
+  arrowGFX: {fileID: 0}

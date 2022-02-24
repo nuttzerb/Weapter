@@ -2,19 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="New Gun WP", menuName ="Weapon/Gun")]
+[CreateAssetMenu(fileName ="New Weapon", menuName ="Weapon")]
 public class Weapon : ScriptableObject
 {
+    [Header("General")]
     public Sprite currentWeaponSprite;
-    public GameObject bulletPrefab;
-    public GameObject bullet;
-    public float fireRate = 1;
-    public int damage = 20;
+    public WeaponType weaponType;
+    public int damage = 20;   
 
+    [Header("Gun")]
+    public GameObject bulletPrefab;
+    [HideInInspector] public GameObject bullet;
+    public float fireRate = 1;
+
+    [Header("Sword")]
+    public float attackRange;
+
+    [Header("BOW")]
+    public GameObject arrowPrefab;
+    public SpriteRenderer arrowGFX;
     public void Shoot()
     {
         bullet = Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, Quaternion.identity);
         
+    }
+    public enum WeaponType
+    {
+        Sword,
+        Bow,
+        Gun
     }
 
 

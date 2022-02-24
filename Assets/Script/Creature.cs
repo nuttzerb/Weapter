@@ -7,8 +7,8 @@ public class Creature : MonoBehaviour
     //public
     public int hitpoint;
     public int maxHitpoint = 10;
-    public float speed = 10f;
-
+    public float speed = 7f;
+    public SpriteRenderer spriteRenderer;
     //immunity
     protected float immuneTime = 1.0f;
     protected float lastImmune;
@@ -25,39 +25,18 @@ public class Creature : MonoBehaviour
         hitpoint = maxHitpoint;
      //   GameManager.instance.player.healthBar.SetMaxHealth(GameManager.instance.player.maxHitpoint);
     }
-/*    protected virtual void Damaged(Damage dmg)
+    public void TakeDamage(int dmg)
     {
-        if (Time.time - lastImmune > immuneTime)
+        hitpoint -= dmg;
+        Debug.Log("Damage taken");
+        if(hitpoint<=0)
         {
-            lastImmune = Time.time;
-            hitpoint -= dmg.damageAmount;
-            pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
-
-            GameManager.instance.ShowText(dmg.damageAmount.ToString(), 25, Color.red, transform.position, Vector3.zero, 0.5f);
-            if (hitpoint <= 0)
-            {
-                hitpoint = 0;
-                Death();
-            }
-        }
-    }
-    protected virtual void ProjectileDamaged(Damage dmg)
-    {
-
-        hitpoint -= dmg.damageAmount;
-        //   pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
-
-        GameManager.instance.ShowText(dmg.damageAmount.ToString(), 25, Color.red, transform.position, Vector3.zero, 0.5f);
-
-        if (hitpoint <= 0)
-        {
-            hitpoint = 0;
             Death();
         }
-
-    }*/
+    }
 
     protected virtual void Death()
     {
+    
     }
 }

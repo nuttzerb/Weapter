@@ -13,7 +13,6 @@ public class Player : Creature
 
     public Weapon currentWeapon;
     private Vector3 movement;
-    private SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider2D;
 /*    public PlayerProjectile playerProjectile;
