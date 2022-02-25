@@ -5,7 +5,10 @@ using UnityEngine;
 public class Enemy : Creature
 {
     [SerializeField] Transform player;
-    [SerializeField] float timeBtwMoving;
+     float timeBtwMoving;
+
+    [SerializeField]  float minTimeBtwMoving;
+    [SerializeField] float maxTimeBtwMoving;
 
     [SerializeField] float chaseDisteance;
     [SerializeField] float stoppingDistance;
@@ -22,7 +25,8 @@ public class Enemy : Creature
     // Update is called once per frame
     void Update()
     {
-         if(canMove) StartCoroutine(Move());
+        timeBtwMoving = Random.Range(minTimeBtwMoving, maxTimeBtwMoving);
+         if (canMove) StartCoroutine(Move());
     }
      IEnumerator Move()
     {
@@ -36,7 +40,7 @@ public class Enemy : Creature
             transform.position = this.transform.position; // neu trong khoang cach hop ly thi dung yen
                                                           // rb.MovePosition(transform.position);
         }
-        yield return new WaitForSeconds(timeBtwMoving);
+        yield return new WaitForSeconds(timeBtwMoving); 
         canMove = false;
         yield return new WaitForSeconds(timeBtwMoving);
         canMove = true;

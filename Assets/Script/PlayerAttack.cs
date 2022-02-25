@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
     public Player player;
+    [SerializeField] WeaponController weaponController;
     //GUN
     [Header("GUN")]
     public float bulletForce = 20;
@@ -32,10 +33,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Slider bowPowerSlider;
     [SerializeField] Transform bow;
 
-    [Range(0, 10)]
-    [SerializeField] float bowPower;
+   // [Range(50, 70)]
+   // [SerializeField] float bowPower;
     [Range(0, 3)]
     [SerializeField] float maxBowCharge;
+    [SerializeField]float arrowSpeed = 50f;
     float bowCharge;
     bool canFire = true;
     private void Start()
@@ -44,11 +46,12 @@ public class PlayerAttack : MonoBehaviour
         playerWeaponSpriteRenderer = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
         bowPowerSlider.value = 0;
         bowPowerSlider.maxValue = maxBowCharge;
-
+        weaponController = transform.GetChild(0).GetComponent<WeaponController>();
     }
     // Update is called once per frame
     void Update()
     {
+
         switch (player.currentWeapon.weaponType)
         {
             case (Weapon.WeaponType.Gun): 
@@ -139,10 +142,11 @@ public class PlayerAttack : MonoBehaviour
             bowPowerSlider.value = bowCharge;
         }
     }
-
+    
     void ChargeBow()
     {
-       player.currentWeapon.arrowGFX.enabled = true;
+      //  transform.GetChild(0).rotation = Quaternion.
+        player.currentWeapon.arrowGFX.enabled = true;
         bowCharge += Time.deltaTime;
         bowPowerSlider.value = bowCharge;
 
@@ -155,7 +159,6 @@ public class PlayerAttack : MonoBehaviour
     void FireBow()
     {
         if (bowCharge > maxBowCharge) bowCharge = maxBowCharge;
-        float arrowSpeed = bowCharge * bowPower;
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // lay vi tri chuot
         myPos = transform.position;

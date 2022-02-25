@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Creature
-{
+{   
 
     public float dashRange = 50f;
     public float timeBetweenDash = 1f;

@@ -21,6 +21,7 @@ public class Weapon : ScriptableObject
     [Header("BOW")]
     public GameObject arrowPrefab;
     public SpriteRenderer arrowGFX;
+    public SpriteRenderer bowCharge;
     public void Shoot()
     {
         bullet = Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, Quaternion.identity);

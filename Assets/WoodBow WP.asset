@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4254c950662b0c847ab872024fa42da1, type: 3}
   m_Name: WoodBow WP
   m_EditorClassIdentifier: 
-  currentWeaponSprite: {fileID: -1228767104509799492, guid: 60c9cb09c73cdbb42a5530f673809bc0,
+  currentWeaponSprite: {fileID: 21300000, guid: 11493fd84e7e7844498ab48dc1ca2efa,
     type: 3}
   weaponType: 1
   damage: 20
@@ -22,5 +22,6 @@ MonoBehaviour:
   attackRange: 0
   arrowPrefab: {fileID: 37310707790713912, guid: f8e0bcaa3d3e21440a6773305e160204,
     type: 3}
-  arrowGFX: {fileID: 1789561816277013544, guid: 5f39d3e587634c9498e2947cad826466,
+  arrowGFX: {fileID: 37310707790713915, guid: f8e0bcaa3d3e21440a6773305e160204, type: 3}
+  bowCharge: {fileID: 6495140159131486557, guid: 26ae6ee6b3591044d9eaf5e3920d5b87,
     type: 3}

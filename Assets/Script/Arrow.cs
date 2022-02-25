@@ -4,19 +4,25 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    [HideInInspector] public float arrowVelocity;
-    [SerializeField] Rigidbody2D rb;
-
-
-    void Start()
+    Player player;
+    PlayerAttack playerAttack;
+    //public float pushForce = 2.0f;
+    private void Start()
     {
-        Destroy(gameObject, 4f);
+        player = FindObjectOfType<Player>();
+        //if(player.currentWeapon.weaponType)
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-    //    Destroy(gameObject);
+        if (collision.tag == "Enemy")
+        {
+            collision.GetComponent<Enemy>().TakeDamage(player.currentWeapon.damage  );
+            Destroy(gameObject);
+        }
 
+        if (collision.tag == "Edge")
+        {
+            Destroy(gameObject);
+        }
     }
-
 }

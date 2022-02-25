@@ -28,7 +28,6 @@ public class Creature : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         hitpoint -= dmg;
-        Debug.Log("Damage taken");
         if(hitpoint<=0)
         {
             Death();
