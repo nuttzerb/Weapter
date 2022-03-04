@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    public int damage;
+    public int damage=1;
     public float pushForce = 0f;
 
     public float duration;
@@ -20,10 +20,12 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            //player get hit
+            GameManager.instance.player.TakeDamage(damage);
+            GameManager.instance.playerHealth.SetHealth(GameManager.instance.player.hitpoint);
 
-        //   collision.SendMessage("ProjectileDamaged", pDmg);
-        //    GameManager.instance.player.audioSource.PlayOneShot(damagedAudio);
-        //    GameManager.instance.player.healthBar.SetHealth(GameManager.instance.player.hitpoint);
+
+            //    GameManager.instance.player.audioSource.PlayOneShot(damagedAudio);
             StartCoroutine(cameraShake.Shake(duration, magnitude));
             Destroy(gameObject);
 

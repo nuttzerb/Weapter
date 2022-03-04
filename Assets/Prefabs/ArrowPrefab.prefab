@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1396146351}
   - component: {fileID: 1396146350}
   - component: {fileID: 8125681491589282212}
-  - component: {fileID: -1014119373789030633}
   m_Layer: 0
   m_Name: ArrowPrefab
   m_TagString: Untagged
@@ -98,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510b9bc607826b547a63d67a82085d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  arrowVelocity: 0
+  rb: {fileID: 1396146350}
 --- !u!50 &1396146350
 Rigidbody2D:
   serializedVersion: 4
@@ -145,15 +147,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.08958244, y: 0.57974863}
   m_EdgeRadius: 0
---- !u!114 &-1014119373789030633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37310707790713912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cea7076d2f5ae042a6bb642f1687d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

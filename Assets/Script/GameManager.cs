@@ -11,14 +11,15 @@ public class GameManager : MonoBehaviour
 
     //references
     public Player player;
+    public PlayerHealth playerHealth;
    // public Weapon weapon;
-/*    public FloatingTextManager floatingTextManager;
-    public Animator deadMenuAnimator;
-    public Animator resultMenuAnimator;
-    public Animator characterMenuAnimator;*/
-   // public ResultMenu resultMenu;
+    //public GameObject floatingTextManager;
+    /*  public Animator deadMenuAnimator;
+      public Animator resultMenuAnimator;
+      public Animator characterMenuAnimator;*/
+    // public ResultMenu resultMenu;
 
-     int enemyCount = 0;
+    // int enemyCount = 0;
     public int coins;
     private void Awake()
     {
@@ -30,13 +31,13 @@ public class GameManager : MonoBehaviour
             return;
         }
          instance = this; // quan trong
-          //   ResetState();
-          //  player.healthBar.SetMaxHealth(player.maxHitpoint);
+                          //   ResetState();
+      playerHealth.SetMaxHealth(player.maxHitpoint);
         /* SceneManager.sceneLoaded += LoadState;
          DontDestroyOnLoad(gameObject);*/
     }
 
-    public void ShowText(string msg, int fontSize, Color color, Vector3 position, Vector3 motion, float duration)
+    public void ShowText(string text,  Color color, Vector3 position, float duration)
     {
         //floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }

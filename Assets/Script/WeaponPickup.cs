@@ -16,6 +16,7 @@ public class WeaponPickup : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
          playerWeaponSpriteRenderer = GetComponent<SpriteRenderer>();
         tempSpriteWeapon = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = weapon.currentWeaponSprite;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

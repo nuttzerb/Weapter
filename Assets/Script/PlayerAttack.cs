@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
     public Player player;
-    [SerializeField] WeaponController weaponController;
+    [Header("Camera Shake")]
+    [SerializeField] CameraShake cameraShake;
+    [SerializeField] float duration;
+    [SerializeField] float magnitude;
     //GUN
     [Header("GUN")]
     public float bulletForce = 20;
@@ -44,9 +47,9 @@ public class PlayerAttack : MonoBehaviour
     {
         player = GetComponent<Player>();
         playerWeaponSpriteRenderer = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
+        cameraShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
         bowPowerSlider.value = 0;
         bowPowerSlider.maxValue = maxBowCharge;
-        weaponController = transform.GetChild(0).GetComponent<WeaponController>();
     }
     // Update is called once per frame
     void Update()
@@ -80,12 +83,12 @@ public class PlayerAttack : MonoBehaviour
                 player.currentWeapon.bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
+            //    StartCoroutine(cameraShake.Shake(duration, magnitude));
 
             }
-
 
             //   GameManager.instance.player.audioSource.PlayOneShot(shootAudio);
-            }
+        }
         }
     //SWORD
     private void SwordAttack()
@@ -145,8 +148,9 @@ public class PlayerAttack : MonoBehaviour
     
     void ChargeBow()
     {
-      //  transform.GetChild(0).rotation = Quaternion.
+        player.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = player.currentWeapon.bowCharge.sprite;
         player.currentWeapon.arrowGFX.enabled = true;
+
         bowCharge += Time.deltaTime;
         bowPowerSlider.value = bowCharge;
 
@@ -159,18 +163,24 @@ public class PlayerAttack : MonoBehaviour
     void FireBow()
     {
         if (bowCharge > maxBowCharge) bowCharge = maxBowCharge;
-
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // lay vi tri chuot
+        //input mouse rotation
+        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         myPos = transform.position;
         direction = (mousePos - myPos).normalized;
-
-        Arrow arrow = Instantiate(player.currentWeapon.arrowPrefab, bow.position, Quaternion.identity).GetComponent<Arrow>();
-        // arrow.arrowVelocity = arrowSpeed;
-
-        arrow.GetComponent<Rigidbody2D>().velocity = direction * arrowSpeed;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, angle-90));
+        //
+        //arrow
+        Arrow arrow = Instantiate(player.currentWeapon.arrowPrefab, GameObject.Find("FirePoint").transform.position, rot).GetComponent<Arrow>();
+        arrow.arrowVelocity = arrowSpeed; // co dinh
+        float bowChargex10 = bowCharge * 10;
+       // print("float " + (int) bowChargex10);
+        arrow.damage = player.currentWeapon.damage * (int)bowChargex10;
 
         canFire = false;
         player.currentWeapon.arrowGFX.enabled = false;
+        player.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>().sprite = player.currentWeapon.currentWeaponSprite;
+
     }
 
     private void OnDrawGizmosSelected()

@@ -15,6 +15,7 @@ public class Player : Creature
     private Vector3 movement;
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider2D;
+ //   public SpriteRenderer playerSprite;
 /*    public PlayerProjectile playerProjectile;
     public HealthBar healthBar;*/
     //audio
@@ -28,7 +29,6 @@ public class Player : Creature
         // healthBar.SetMaxHealth(maxHitpoint);
    //     playerProjectile.damagePoint = 1;
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
@@ -63,18 +63,6 @@ public class Player : Creature
     {
         //di chuyen
         rb.velocity = new Vector3(movement.x * speed, movement.y * speed);
-        //doi chieu
-        if (movement.x > 0)
-        {
-            transform.localScale = Vector3.one;
-            transform.GetChild(0).localScale = Vector3.one;
-        }
-        else if (movement.x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-            transform.GetChild(0).localScale = new Vector3(-1, 1, 1);
-        }
-
     }
 /*    public void SwapSprite(int skinId)
     {
@@ -84,8 +72,9 @@ public class Player : Creature
     protected override void Death()
     {
         isAlive = false;
+      //  spriteRenderer.color = Color.black;
  //     GameManager.instance.deadMenuAnimator.SetTrigger("show");
-     //   audioSource.PlayOneShot(deadAudio);
+ //   audioSource.PlayOneShot(deadAudio);
     }
     /*    public void Respawn()   
         {

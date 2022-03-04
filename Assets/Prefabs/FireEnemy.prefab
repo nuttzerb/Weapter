@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 291243432}
   - component: {fileID: 291243435}
   - component: {fileID: 291243433}
+  - component: {fileID: 928387855}
   m_Layer: 6
   m_Name: FireEnemy
   m_TagString: Enemy
@@ -166,5 +167,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoint: 0
-  maxHitpoint: 10
-  speed: 10
+  maxHitpoint: 2
+  speed: 0.5
+  spriteRenderer: {fileID: 0}
+  player: {fileID: 0}
+  lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
+    type: 3}
+  minTimeBtwMoving: 1
+  maxTimeBtwMoving: 2
+  chaseDisteance: 0
+  stoppingDistance: 0
+--- !u!114 &928387855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232691951769819374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a798f9cc243a9f49a73ab9413e6279d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1472824194512622282, guid: c81e25d932926204fa4ac32389f5ba08,
+    type: 3}
+  player: {fileID: 0}
+  distanceToShoot: 20
+  projectileForce: 10
+  minCooldown: 2
+  maxCooldown: 3

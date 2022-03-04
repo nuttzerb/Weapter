@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy : Creature
 {
     [SerializeField] Transform player;
-     float timeBtwMoving;
-
+    [SerializeField] GameObject lootDrop;
+    private float timeBtwMoving;
     [SerializeField]  float minTimeBtwMoving;
     [SerializeField] float maxTimeBtwMoving;
 
@@ -30,6 +30,7 @@ public class Enemy : Creature
     }
      IEnumerator Move()
     {
+
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance) // neu xa qua thi lai gan
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
@@ -45,9 +46,15 @@ public class Enemy : Creature
         yield return new WaitForSeconds(timeBtwMoving);
         canMove = true;
     }
+
+
+
+
     protected override void Death()
     {
+        Instantiate(lootDrop, transform.position, Quaternion.identity);
         base.Death();
         Destroy(gameObject);
     }
+
 }

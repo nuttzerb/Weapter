@@ -166,5 +166,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoint: 0
-  maxHitpoint: 10
-  speed: 10
+  maxHitpoint: 2
+  speed: 0.5
+  spriteRenderer: {fileID: 0}
+  player: {fileID: 0}
+  lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
+    type: 3}
+  minTimeBtwMoving: 2
+  maxTimeBtwMoving: 3
+  chaseDisteance: 0
+  stoppingDistance: 0
