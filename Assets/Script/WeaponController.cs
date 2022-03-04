@@ -24,7 +24,8 @@ public class WeaponController : MonoBehaviour
                 angle -= 45;
             }
             player.transform.GetComponent<SpriteRenderer>().flipX = true;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = true;// weapon sprite
+            transform.GetChild(1).GetComponent<SpriteRenderer>().flipY = true; // sword slash
         }
         if (dir.x > 0)
         {
@@ -34,7 +35,9 @@ public class WeaponController : MonoBehaviour
             }
 
             player.transform.GetComponent<SpriteRenderer>().flipX = false;
-            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = false;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().flipY = false;// weapon sprite
+            transform.GetChild(1).GetComponent<SpriteRenderer>().flipY = false; // sword slash
+
         }
 
         Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);

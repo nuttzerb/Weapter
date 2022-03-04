@@ -15,7 +15,7 @@ MonoBehaviour:
   currentWeaponSprite: {fileID: 8333481726314500824, guid: 69e0ade04eab5dd42846957789b262f0,
     type: 3}
   weaponType: 2
-  damage: 2
+  damage: 20
   bulletPrefab: {fileID: 447421776574431171, guid: 07fa0a9fb29ab7145add73214b20df3d,
     type: 3}
   bullet: {fileID: 0}

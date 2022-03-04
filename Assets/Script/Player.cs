@@ -27,7 +27,7 @@ public class Player : Creature
     {
         base.Start();
         // healthBar.SetMaxHealth(maxHitpoint);
-   //     playerProjectile.damagePoint = 1;
+        //     playerProjectile.damagePoint = 1;
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
@@ -55,7 +55,7 @@ public class Player : Creature
     {
         canDash = false;
         rb.velocity = new Vector2(movement.x * dashRange, movement.y * dashRange);
-       // audioSource.PlayOneShot(dashAudio);
+        // audioSource.PlayOneShot(dashAudio);
         yield return new WaitForSeconds(timeBetweenDash);
         canDash = true;
     }
@@ -98,5 +98,10 @@ public class Player : Creature
 //        GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.red, transform.position, Vector3.up * 30, 1.0f);
       //  audioSource.PlayOneShot(healAudio);
 
+    }
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        GameManager.instance.playerHealth.SetHealth(hitpoint); // xem lai sau
     }
 }

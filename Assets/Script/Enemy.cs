@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Enemy : Creature
 {
-    [SerializeField] Transform player;
+    [SerializeField] protected Transform player;
     [SerializeField] GameObject lootDrop;
     private float timeBtwMoving;
     [SerializeField]  float minTimeBtwMoving;
     [SerializeField] float maxTimeBtwMoving;
 
-    [SerializeField] float chaseDisteance;
-    [SerializeField] float stoppingDistance;
+    [SerializeField] protected float chaseDisteance;
+    [SerializeField] protected float stoppingDistance;
 
     bool canMove=true;
     Rigidbody2D rb;
@@ -23,13 +23,22 @@ public class Enemy : Creature
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         timeBtwMoving = Random.Range(minTimeBtwMoving, maxTimeBtwMoving);
          if (canMove) StartCoroutine(Move());
     }
+
      IEnumerator Move()
     {
+        if(player.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector3 (1, transform.localScale.y, transform.localScale.z);
+        }
+        else
+        {
+            transform.localScale = new Vector3(-1, transform.localScale.y, transform.localScale.z);
+        }
 
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance) // neu xa qua thi lai gan
         {

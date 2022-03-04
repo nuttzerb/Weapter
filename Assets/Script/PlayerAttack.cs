@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+ 
         switch (player.currentWeapon.weaponType)
         {
             case (Weapon.WeaponType.Gun): 

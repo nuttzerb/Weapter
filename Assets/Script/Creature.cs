@@ -25,9 +25,10 @@ public class Creature : MonoBehaviour
     protected virtual void Start()
     {
         hitpoint = maxHitpoint;
+        spriteRenderer = GetComponent<SpriteRenderer>();
      //   GameManager.instance.player.healthBar.SetMaxHealth(GameManager.instance.player.maxHitpoint);
     }
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         Debug.Log(damage);
         ShowDamage(damage.ToString());
