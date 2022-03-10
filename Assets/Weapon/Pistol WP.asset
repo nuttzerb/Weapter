@@ -19,7 +19,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 447421776574431171, guid: 07fa0a9fb29ab7145add73214b20df3d,
     type: 3}
   bullet: {fileID: 0}
-  fireRate: 1
+  fireRate: 0.5
   attackRange: 0
   arrowPrefab: {fileID: 0}
   arrowGFX: {fileID: 0}

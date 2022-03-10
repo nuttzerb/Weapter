@@ -12,7 +12,7 @@ public class EnemyMeleeAttack : Enemy
     {
         base.Start();
         animator = GetComponent<Animator>();
-        attackDistance = base.stoppingDistance + 1.3f;
+        attackDistance = base.stoppingDistance + 1.5f;
     }
 
     // Update is called once per frame

@@ -57,7 +57,10 @@ public class Enemy : Creature
     }
 
 
-
+    public void Spawn()
+    {
+        Instantiate(gameObject, transform.position, Quaternion.identity);
+    }
 
     protected override void Death()
     {
