@@ -30,7 +30,7 @@ public class Creature : MonoBehaviour
     }
     public virtual void TakeDamage(int damage)
     {
-        Debug.Log(damage);
+      //  Debug.Log(damage);
         ShowDamage(damage.ToString());
         hitpoint -= damage;
         if(hitpoint<=0)

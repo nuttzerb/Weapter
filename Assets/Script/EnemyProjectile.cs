@@ -22,7 +22,7 @@ public class EnemyProjectile : MonoBehaviour
         {
             //player get hit
             GameManager.instance.player.TakeDamage(damage);
-            GameManager.instance.playerHealth.SetHealth(GameManager.instance.player.hitpoint);
+      //      GameManager.instance.playerHealth.SetHealth(GameManager.instance.player.hitpoint);
 
 
             //    GameManager.instance.player.audioSource.PlayOneShot(damagedAudio);

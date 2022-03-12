@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 536990908}
   - component: {fileID: 536990904}
   - component: {fileID: 536990905}
+  - component: {fileID: 873425224}
   m_Layer: 6
   m_Name: MukEnemy
   m_TagString: Enemy
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 2386357339607380269, guid: d2da1f69eed849142a531a4d81e72519,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.44716978, b: 0.9911203, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -170,15 +171,27 @@ MonoBehaviour:
     type: 3}
   hitpoint: 0
   maxHitpoint: 100
-  speed: 0.5
+  speed: 10
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
     type: 3}
-  minTimeBtwMoving: 2
-  maxTimeBtwMoving: 3
+  minTimeBtwMoving: 0
+  maxTimeBtwMoving: 0
   chaseDisteance: 0
   stoppingDistance: 0
+--- !u!114 &873425224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678033858249288534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b40fcc67c23ff41aad298331f68f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2370155693073919390
 PrefabInstance:
   m_ObjectHideFlags: 0
