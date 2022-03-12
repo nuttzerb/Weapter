@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class EnemyMeleeAttack : Enemy
 {
-    public float attackDistance;
-    private Animator animator;
+    [HideInInspector] public float attackDistance;
 
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        animator = GetComponent<Animator>();
         attackDistance = base.stoppingDistance + 1.5f;
     }
 
@@ -47,4 +45,5 @@ public class EnemyMeleeAttack : Enemy
             GameManager.instance.player.TakeDamage(1);
         }
     }
+
 }

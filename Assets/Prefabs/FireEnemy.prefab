@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 1496308625924154054, guid: d2da1f69eed849142a531a4d81e72519,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8196909, b: 0.66415095, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -116,7 +116,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232691951769819374}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

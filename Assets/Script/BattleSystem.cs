@@ -40,13 +40,15 @@ public class BattleSystem : MonoBehaviour
     {
         Debug.Log("Start Battle");
         state = State.Active;
+        StartCoroutine(GameManager.instance.cameraShake.Shake(GameManager.instance.duration, GameManager.instance.magnitude));
+
     }
     private void Update()
     {
         switch (state)
         {
             case State.Active:
-                wallZone.active = true;
+                wallZone.SetActive(true) ;
                 foreach (Wave wave in waveArray)
                 {
                     wave.Update();
@@ -64,7 +66,7 @@ public class BattleSystem : MonoBehaviour
             if(AreWaveOver())
             {
                 state = State.BattleOver;
-                wallZone.active = false;
+                wallZone.SetActive(false);
                 Debug.Log("BattleOver");
             }
         }

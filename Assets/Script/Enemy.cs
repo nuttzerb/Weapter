@@ -12,13 +12,15 @@ public class Enemy : Creature
 
     [SerializeField] protected float chaseDisteance;
     [SerializeField] protected float stoppingDistance;
+    protected Animator animator;
 
-    bool canMove=true;
+    bool canMove =true;
     Rigidbody2D rb;
     protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        animator = GetComponent<Animator>();
         base.Start();
     }
 
@@ -66,7 +68,8 @@ public class Enemy : Creature
     {
         Instantiate(lootDrop, transform.position, Quaternion.identity);
         base.Death();
-        Destroy(gameObject);
+        animator.SetTrigger("Dead");
+        Destroy(gameObject, .3f);
     }
 
 }

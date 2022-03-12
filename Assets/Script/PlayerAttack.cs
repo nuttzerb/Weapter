@@ -6,10 +6,7 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
     public Player player;
-    [Header("Camera Shake")]
-    [SerializeField] CameraShake cameraShake;
-    [SerializeField] float duration;
-    [SerializeField] float magnitude;
+
     //GUN
     [Header("GUN")]
     public float bulletForce = 20;
@@ -47,18 +44,20 @@ public class PlayerAttack : MonoBehaviour
     {
         player = GetComponent<Player>();
         playerWeaponSpriteRenderer = transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
-        cameraShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
         bowPowerSlider.value = 0;
         bowPowerSlider.maxValue = maxBowCharge;
     }
     // Update is called once per frame
     void Update()
     {
- 
+
         switch (player.currentWeapon.weaponType)
         {
             case (Weapon.WeaponType.Gun): 
                 GunAttack(); 
+                break;
+            case (Weapon.WeaponType.Shotgun):
+                ShotgunAttack();
                 break;
             case (Weapon.WeaponType.Sword):
                 SwordAttack();
@@ -69,6 +68,28 @@ public class PlayerAttack : MonoBehaviour
             default: break;
         }
     }
+
+    private  void ShotgunAttack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (Time.time >= nextTimeOffFire)
+            {
+                player.currentWeapon.Shoot();
+                mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // lay vi tri chuot
+                myPos = transform.position;
+                direction = (mousePos - myPos).normalized;
+                player.currentWeapon.bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
+
+                nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
+
+                StartCoroutine(GameManager.instance.cameraShake.Shake(.14f, 0.1f));
+            }
+
+            //   GameManager.instance.player.audioSource.PlayOneShot(shootAudio);
+        }
+    }
+
     //GUN
     private void GunAttack()
     {
@@ -83,7 +104,7 @@ public class PlayerAttack : MonoBehaviour
                 player.currentWeapon.bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
-            //    StartCoroutine(cameraShake.Shake(duration, magnitude));
+
 
             }
 
@@ -185,7 +206,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if(attackPos==null)
+        {
+            return;
+        }
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, player.currentWeapon.attackRange);
+        Gizmos.DrawWireSphere(attackPos.position,6f); // player.currentWeapon.attackRange);
     }
 }

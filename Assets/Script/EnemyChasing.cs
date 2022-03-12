@@ -2,20 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyChasing : MonoBehaviour
+public class EnemyChasing : Enemy
 {
     bool canDamage = true;
-    private Animator animator;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        animator = GetComponent<Animator>();
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -26,8 +25,7 @@ public class EnemyChasing : MonoBehaviour
                 GameManager.instance.player.TakeDamage(1);
                 canDamage = false;
             }
-            animator.SetTrigger("Bum");
-            Destroy(gameObject,.3f);
+            base.Death();
         }
     }
 }

@@ -31,7 +31,8 @@ public class Weapon : ScriptableObject
     {
         Sword,
         Bow,
-        Gun
+        Gun,
+        Shotgun,
     }
 
 

@@ -173,11 +173,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5008438539917119581}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
   hitpoint: 0
-  maxHitpoint: 100
-  speed: 2
+  maxHitpoint: 999999
+  speed: 3
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 307399040271756613}
   - component: {fileID: 536990908}
   - component: {fileID: 536990904}
-  - component: {fileID: 536990905}
   - component: {fileID: 873425224}
   m_Layer: 6
   m_Name: MukEnemy
@@ -116,7 +115,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678033858249288534}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -155,31 +154,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7130726, y: 0.5518216}
   m_EdgeRadius: 0
---- !u!114 &536990905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678033858249288534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3086e0d02443e547ab2f926ac14f1cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 2853348295911853081, guid: 9209ff59546f24f419dc037d1bda5c1d,
-    type: 3}
-  hitpoint: 0
-  maxHitpoint: 100
-  speed: 10
-  spriteRenderer: {fileID: 0}
-  player: {fileID: 0}
-  lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
-    type: 3}
-  minTimeBtwMoving: 0
-  maxTimeBtwMoving: 0
-  chaseDisteance: 0
-  stoppingDistance: 0
 --- !u!114 &873425224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +166,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b40fcc67c23ff41aad298331f68f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextPrefab: {fileID: 0}
+  hitpoint: 0
+  maxHitpoint: 50
+  speed: 10
+  spriteRenderer: {fileID: 0}
+  player: {fileID: 0}
+  lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
+    type: 3}
+  minTimeBtwMoving: 0
+  maxTimeBtwMoving: 0
+  chaseDisteance: 0
+  stoppingDistance: 0
 --- !u!1001 &2370155693073919390
 PrefabInstance:
   m_ObjectHideFlags: 0

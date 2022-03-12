@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
+    [Header("Camera Shake")]
+    public CameraShake cameraShake;
+    public float duration=0.4f;
+    public float magnitude=0.15f;
+    [Header("---")]
     public static GameManager instance;
     //resources
     public List<Sprite> playerSprites;
@@ -33,6 +37,8 @@ public class GameManager : MonoBehaviour
          instance = this; // quan trong
                           //   ResetState();
       playerHealth.SetMaxHealth(player.maxHitpoint);
+        cameraShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
+
         /* SceneManager.sceneLoaded += LoadState;
          DontDestroyOnLoad(gameObject);*/
     }
