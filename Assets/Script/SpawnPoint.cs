@@ -12,7 +12,6 @@ public class SpawnPoint : MonoBehaviour
         GameObject clone =  Instantiate(vfxPrefab, transform.position, Quaternion.identity);
         Invoke("SpawnEnemy", destroyTime);
         Destroy(clone, destroyTime);
-   
     }
     private void SpawnEnemy()
     {

@@ -14,7 +14,7 @@ public class Enemy : Creature
     [SerializeField] protected float stoppingDistance;
     protected Animator animator;
 
-    bool canMove =true;
+    protected bool canMove =true;
     Rigidbody2D rb;
     protected override void Start()
     {
@@ -44,11 +44,13 @@ public class Enemy : Creature
 
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance) // neu xa qua thi lai gan
         {
+            canMove = true;
             transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             // rb.MovePosition(transform.position);
         }
         else if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
         {
+            canMove = false;
             transform.position = this.transform.position; // neu trong khoang cach hop ly thi dung yen
                                                           // rb.MovePosition(transform.position);
         }
@@ -56,6 +58,7 @@ public class Enemy : Creature
         canMove = false;
         yield return new WaitForSeconds(timeBtwMoving);
         canMove = true;
+
     }
 
 
@@ -66,7 +69,11 @@ public class Enemy : Creature
 
     protected override void Death()
     {
-        Instantiate(lootDrop, transform.position, Quaternion.identity);
+        if(lootDrop!=null)
+        {
+            Instantiate(lootDrop, transform.position, Quaternion.identity);
+
+        }
         base.Death();
         animator.SetTrigger("Dead");
         Destroy(gameObject, .3f);

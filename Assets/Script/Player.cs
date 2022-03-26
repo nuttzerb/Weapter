@@ -72,6 +72,7 @@ public class Player : Creature
     protected override void Death()
     {
         isAlive = false;
+        Debug.Log("DEAD");
       //  spriteRenderer.color = Color.black;
  //     GameManager.instance.deadMenuAnimator.SetTrigger("show");
  //   audioSource.PlayOneShot(deadAudio);

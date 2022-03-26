@@ -104,7 +104,7 @@ public class PlayerAttack : MonoBehaviour
                 player.currentWeapon.bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
-
+             //   bowPowerSlider.value = nextTimeOffFire;
 
             }
 

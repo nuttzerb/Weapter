@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 2386357339607380269, guid: d2da1f69eed849142a531a4d81e72519,
     type: 3}
-  m_Color: {r: 1, g: 0.44716978, b: 0.9911203, a: 1}
+  m_Color: {r: 0.99628234, g: 0.4470588, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
   hitpoint: 0
-  maxHitpoint: 50
+  maxHitpoint: 20
   speed: 10
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}

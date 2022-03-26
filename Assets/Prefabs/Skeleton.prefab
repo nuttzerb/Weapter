@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
   hitpoint: 0
-  maxHitpoint: 999999
+  maxHitpoint: 140
   speed: 3
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}

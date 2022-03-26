@@ -419,7 +419,7 @@ MonoBehaviour:
   bulletForce: 20
   nextTimeOffFire: 0
   shootAudio: {fileID: 0}
-  startTimeBtwAttack: 0.01
+  startTimeBtwAttack: 0
   attackPos: {fileID: 3679804149226402433}
   whatIsEnemy:
     serializedVersion: 2

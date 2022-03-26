@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 3297003393538522701}
   - component: {fileID: 2991892989425387444}
   - component: {fileID: 2991892989425387440}
-  - component: {fileID: 2991892989425387441}
-  - component: {fileID: 3693586076097256480}
+  - component: {fileID: -348971296409771474}
   m_Layer: 6
-  m_Name: SlimeEnemy
+  m_Name: SlimeBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 906ad27146526e0498ef9704dfdb8ab0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -98,7 +97,7 @@ Animator:
   m_GameObject: {fileID: 4525207457825929310}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7f337789208441548a6aa3937083895d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -154,43 +153,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7130726, y: 0.5518216}
   m_EdgeRadius: 0
---- !u!114 &2991892989425387441
+--- !u!114 &-348971296409771474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4525207457825929310}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3086e0d02443e547ab2f926ac14f1cc, type: 3}
+  m_Script: {fileID: 11500000, guid: ab2e842de0473864090ede5f5e8a904a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 2853348295911853081, guid: 9209ff59546f24f419dc037d1bda5c1d,
-    type: 3}
+  floatingTextPrefab: {fileID: 0}
   hitpoint: 0
   maxHitpoint: 100
   speed: 4
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
-  lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
+  lootDrop: {fileID: 2738934529947296510, guid: eb1b0a2985b65e94eb979d694e0a2154,
     type: 3}
   minTimeBtwMoving: 0
   maxTimeBtwMoving: 0
   chaseDisteance: 0
-  stoppingDistance: 0
---- !u!114 &3693586076097256480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4525207457825929310}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b40fcc67c23ff41aad298331f68f72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  stoppingDistance: 3
+  minTimeBtwSpawn: 5
+  maxTimebtwSpawn: 8
+  enemyObject: {fileID: 1678033858249288534, guid: 3d9d0f75d76318a44952cd3a60f60638,
+    type: 3}
+  healthBar: {fileID: 0}
 --- !u!1001 &675868534011936406
 PrefabInstance:
   m_ObjectHideFlags: 0
