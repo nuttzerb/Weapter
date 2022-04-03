@@ -15,7 +15,7 @@ public class Enemy : Creature
     protected Animator animator;
 
     protected bool canMove =true;
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
     protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -79,4 +79,10 @@ public class Enemy : Creature
         Destroy(gameObject, .3f);
     }
 
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        GameManager.instance.ShowText("" + damage + "", 24, Color.red, transform.position, Vector3.one, .3f);
+
+    }
 }

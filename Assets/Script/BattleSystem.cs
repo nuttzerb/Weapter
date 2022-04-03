@@ -13,6 +13,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Wave[] waveArray;
     [SerializeField] BattleColliderTrigger colliderTrigger;
     [SerializeField] GameObject wallZone;
+    [SerializeField] GameObject wallZonemMinimap;
 
     private State state;
     private void Awake()
@@ -49,6 +50,7 @@ public class BattleSystem : MonoBehaviour
         {
             case State.Active:
                 wallZone.SetActive(true) ;
+                wallZonemMinimap.SetActive(true);
                 foreach (Wave wave in waveArray)
                 {
                     wave.Update();
@@ -67,6 +69,7 @@ public class BattleSystem : MonoBehaviour
             {
                 state = State.BattleOver;
                 wallZone.SetActive(false);
+                wallZonemMinimap.SetActive(false);
                 Debug.Log("BattleOver");
             }
         }
@@ -101,7 +104,6 @@ public class BattleSystem : MonoBehaviour
         public void Update()
         {
         //    Debug.Log(enemyInScene.Length);
-
             if (timer>0)
             {
                 timer -= Time.deltaTime;

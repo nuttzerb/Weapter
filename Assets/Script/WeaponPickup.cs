@@ -23,7 +23,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if(collision.tag=="Player")
         {
-
+            GameManager.instance.ShowText(weapon.name, 20, Color.white, transform.position, Vector3.one, 1f);
             playerWeaponSpriteRenderer = collision.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
             //bien tam
             tempWeapon = collision.GetComponent<Player>().currentWeapon;
@@ -34,7 +34,6 @@ public class WeaponPickup : MonoBehaviour
             // bo vu khi xuong
             weapon = tempWeapon;
             spriteRenderer.sprite = tempSpriteWeapon.sprite;
-
 
 
         }

@@ -29,10 +29,9 @@ public class Chest : MonoBehaviour
                 OnCollect();
             }
             GetComponent<SpriteRenderer>().sprite = emptyChest;
-            //        GameManager.instance.ShowText("+" + amount + " coin", 36, Color.yellow, transform.position, Vector3.up * 50, 1.0f);
-            //  GameManager.instance.coins += amount;
+              GameManager.instance.ShowText("+" + amount + " coin", 36, Color.yellow, transform.position, Vector3.one, 1.0f);
+              GameManager.instance.coins += amount;
             // audioSource.Play();
-            GameManager.instance.coins += amount;
         }
     }
 }

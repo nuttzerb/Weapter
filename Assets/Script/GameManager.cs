@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class GameManager : MonoBehaviour
     public CameraShake cameraShake;
     public float duration=0.4f;
     public float magnitude=0.15f;
+    [Header("Boss")]
+    public Slider bossHealthSlider;
     [Header("---")]
     public static GameManager instance;
     //resources
@@ -17,7 +21,7 @@ public class GameManager : MonoBehaviour
     public Player player;
     public PlayerHealth playerHealth;
    // public Weapon weapon;
-    //public GameObject floatingTextManager;
+    public FloatingTextManager floatingTextManager;
     /*  public Animator deadMenuAnimator;
       public Animator resultMenuAnimator;
       public Animator characterMenuAnimator;*/
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(player.gameObject);
-      //      Destroy(floatingTextManager.gameObject);
+            Destroy(floatingTextManager.gameObject);
             return;
         }
          instance = this; // quan trong
@@ -43,9 +47,9 @@ public class GameManager : MonoBehaviour
          DontDestroyOnLoad(gameObject);*/
     }
 
-    public void ShowText(string text,  Color color, Vector3 position, float duration)
+    public void ShowText(string msg, int fontSize,  Color color, Vector3 position,Vector3 motion, float duration)
     {
-        //floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
+        floatingTextManager.Show(msg, fontSize, color, position, motion, duration);
     }
     public void Hide()
     {
