@@ -75,11 +75,15 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Time.time >= nextTimeOffFire)
             {
-                player.currentWeapon.Shoot();
+                player.currentWeapon.Shoot(3);
                 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // lay vi tri chuot
                 myPos = transform.position;
                 direction = (mousePos - myPos).normalized;
-                player.currentWeapon.bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
+                player.currentWeapon.bullet[0].GetComponent<Rigidbody2D>().velocity =  direction* bulletForce; // velocity - van toc
+                player.currentWeapon.bullet[1].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x,direction.y-0.3f) * bulletForce; // velocity - van toc
+                player.currentWeapon.bullet[2].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, direction.y + 0.3f) * bulletForce; // velocity - van toc
+
+                Debug.Log(direction);
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
 
@@ -97,11 +101,11 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Time.time >= nextTimeOffFire)
             {
-                player.currentWeapon.Shoot();
+                player.currentWeapon.Shoot(1);
                 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // lay vi tri chuot
                 myPos = transform.position;
                 direction = (mousePos - myPos).normalized;
-                player.currentWeapon.bullet.GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
+                player.currentWeapon.bullet[0].GetComponent<Rigidbody2D>().velocity = direction * bulletForce; // velocity - van toc
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
              //   bowPowerSlider.value = nextTimeOffFire;

@@ -12,7 +12,7 @@ public class Weapon : ScriptableObject
 
     [Header("Gun")]
     public GameObject bulletPrefab;
-    [HideInInspector] public GameObject bullet;
+    [HideInInspector] public GameObject[] bullet;
     public float fireRate = 1;
 
     [Header("Sword")]
@@ -22,10 +22,14 @@ public class Weapon : ScriptableObject
     public GameObject arrowPrefab;
     public SpriteRenderer arrowGFX;
     public SpriteRenderer bowCharge;
-    public void Shoot()
+    public void Shoot(int num)
     {
-        bullet = Instantiate(bulletPrefab, GameObject.Find("FirePoint").transform.position, Quaternion.identity);
-        
+         bullet = new GameObject[num];
+        for (int i = 0; i < num; i++)
+        {
+            bullet[i] = Instantiate(bulletPrefab, GameObject.FindWithTag("FirePoint").transform.position, Quaternion.identity);
+        }
+
     }
     public enum WeaponType
     {
