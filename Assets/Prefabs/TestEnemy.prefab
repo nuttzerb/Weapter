@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8865268490065783027}
   - component: {fileID: 7804263576970106646}
   - component: {fileID: 7804263576970106642}
-  - component: {fileID: 7804263576635189986}
+  - component: {fileID: 5772532800985889063}
   m_Layer: 6
   m_Name: TestEnemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,10 +75,10 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2386357339607380269, guid: d2da1f69eed849142a531a4d81e72519,
+  m_Sprite: {fileID: 8177203260375688589, guid: d2da1f69eed849142a531a4d81e72519,
     type: 3}
-  m_Color: {r: 0.99628234, g: 0.4470588, b: 1, a: 1}
-  m_FlipX: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -121,20 +121,20 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0013435781, y: 0.2759108}
+  m_Offset: {x: -0.0056409836, y: 0.020658493}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.8125, y: 0.5625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.625, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7130726, y: 0.5518216}
+  m_Size: {x: 0.6152973, y: 1.0025749}
   m_EdgeRadius: 0
---- !u!114 &7804263576635189986
+--- !u!114 &5772532800985889063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8865268490065783036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b40fcc67c23ff41aad298331f68f72, type: 3}
+  m_Script: {fileID: 11500000, guid: f3086e0d02443e547ab2f926ac14f1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
   hitpoint: 0
-  maxHitpoint: 20
-  speed: 10
+  maxHitpoint: 99999
+  speed: 0
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,

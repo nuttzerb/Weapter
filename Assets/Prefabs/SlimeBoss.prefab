@@ -274,7 +274,18 @@ MonoBehaviour:
   maxTimebtwSpawn: 8
   enemyObject: {fileID: 1678033858249288534, guid: 3d9d0f75d76318a44952cd3a60f60638,
     type: 3}
-  healthBar: {fileID: 0}
+  idleMoveSpeed: 0
+  idleMoveDirection: {x: 0, y: 0}
+  attackMoveSpeed: 0
+  attackMoveDirection: {x: 0, y: 0}
+  attackPlayerSpeed: 0
+  wallCheckUp: {fileID: 0}
+  wallCheckDown: {fileID: 0}
+  wallCheckSide: {fileID: 0}
+  wallCheckRadius: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &675868534011936406
 PrefabInstance:
   m_ObjectHideFlags: 0

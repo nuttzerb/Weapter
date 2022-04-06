@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 196406194423527874, guid: 7dca965de8135d54680d6294e66e9b12, type: 3}
+  pushForce: 0.2
 --- !u!50 &4861987538778850417
 Rigidbody2D:
   serializedVersion: 4

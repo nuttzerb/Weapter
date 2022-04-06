@@ -24349,41 +24349,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
+    - target: {fileID: 5772532800985889063, guid: a00aafc3cd3454e4184afe7f66e1ac77,
         type: 3}
-      propertyPath: m_Size.x
-      value: 0.6152973
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.0025749
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.0056409836
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.020658493
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 7804263576970106642, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1843925588}
     - target: {fileID: 8865268490065783026, guid: a00aafc3cd3454e4184afe7f66e1ac77,
         type: 3}
       propertyPath: m_RootOrder
@@ -24439,32 +24409,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8865268490065783027, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8865268490065783027, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 8177203260375688589, guid: d2da1f69eed849142a531a4d81e72519,
-        type: 3}
-    - target: {fileID: 8865268490065783027, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8865268490065783027, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8865268490065783027, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8865268490065783036, guid: a00aafc3cd3454e4184afe7f66e1ac77,
         type: 3}
       propertyPath: m_Name
@@ -24472,16 +24416,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8865268490065783036, guid: a00aafc3cd3454e4184afe7f66e1ac77,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8865268490065783036, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-        type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7804263576635189986, guid: a00aafc3cd3454e4184afe7f66e1ac77, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a00aafc3cd3454e4184afe7f66e1ac77, type: 3}
 --- !u!1001 &3413555917145108505
 PrefabInstance:
@@ -24878,36 +24816,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d148a5ba7300e0e49a6aed9561f65c66, type: 3}
---- !u!1 &5772532800985889062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8865268490065783036, guid: a00aafc3cd3454e4184afe7f66e1ac77,
-    type: 3}
-  m_PrefabInstance: {fileID: 3106328461742461402}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5772532800985889063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5772532800985889062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3086e0d02443e547ab2f926ac14f1cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 0}
-  hitpoint: 0
-  maxHitpoint: 99999
-  speed: 0
-  spriteRenderer: {fileID: 0}
-  player: {fileID: 1843925588}
-  lootDrop: {fileID: 6451116240336235197, guid: fce3c0c828995904999c8d30c835c6e3,
-    type: 3}
-  minTimeBtwMoving: 0
-  maxTimeBtwMoving: 0
-  chaseDisteance: 0
-  stoppingDistance: 0
 --- !u!1001 &8057576911088508420
 PrefabInstance:
   m_ObjectHideFlags: 0

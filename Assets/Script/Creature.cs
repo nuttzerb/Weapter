@@ -30,21 +30,13 @@ public class Creature : MonoBehaviour
     }
     public virtual void TakeDamage(int damage)
     {
-        ShowDamage(damage.ToString());
         hitpoint -= damage;
         if(hitpoint<=0)
         {
             Death();
         }
     }
-    public void ShowDamage(string text)
-    {
-        if (floatingTextPrefab)
-        {
-            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-            prefab.GetComponent<TextMesh>().text = text;
-        }
-    }
+
     protected virtual void Death()
     {
     
