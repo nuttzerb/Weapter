@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 883862349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: -1.44, z: 0}
+  m_LocalPosition: {x: -2.1, y: -1.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525207457825929296}
@@ -42,7 +42,7 @@ GameObject:
   m_Layer: 6
   m_Name: WallCheckDown
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678073785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.75, z: 0}
+  m_LocalPosition: {x: 0, y: -3.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525207457825929296}
@@ -72,7 +72,7 @@ GameObject:
   m_Layer: 6
   m_Name: WallCheckUp
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -84,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887962202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525207457825929296}
@@ -274,18 +274,23 @@ MonoBehaviour:
   maxTimebtwSpawn: 8
   enemyObject: {fileID: 1678033858249288534, guid: 3d9d0f75d76318a44952cd3a60f60638,
     type: 3}
-  idleMoveSpeed: 0
-  idleMoveDirection: {x: 0, y: 0}
-  attackMoveSpeed: 0
-  attackMoveDirection: {x: 0, y: 0}
-  attackPlayerSpeed: 0
-  wallCheckUp: {fileID: 0}
-  wallCheckDown: {fileID: 0}
-  wallCheckSide: {fileID: 0}
-  wallCheckRadius: 0
+  idleMoveSpeed: 5
+  idleMoveDirection: {x: -1, y: 2}
+  attackMoveSpeed: 10
+  attackMoveDirection: {x: -1, y: 5}
+  attackPlayerSpeed: 20
+  wallCheckUp: {fileID: 1887962203}
+  wallCheckDown: {fileID: 1678073786}
+  wallCheckSide: {fileID: 883862350}
+  wallCheckRadius: 0.5
   wallLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
+  isTouchingUp: 0
+  isTouchingDown: 0
+  isTouchingSide: 0
+  goingUp: 1
+  facingLeft: 1
 --- !u!1001 &675868534011936406
 PrefabInstance:
   m_ObjectHideFlags: 0

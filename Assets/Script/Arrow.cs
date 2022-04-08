@@ -7,7 +7,8 @@ public class Arrow : MonoBehaviour
     [HideInInspector] public int damage=1;
     [HideInInspector] public float arrowVelocity;
     [SerializeField] Rigidbody2D rb;
-    //public float pushForce = 2.0f;
+    [SerializeField] float pushForce;
+    Vector2 direction;
     private void Start()
     {
 
@@ -28,6 +29,8 @@ public class Arrow : MonoBehaviour
             {
                collision.GetComponent<Enemy>().TakeDamage(damage);
             }
+            direction = (collision.transform.position - transform.position).normalized;
+            collision.transform.position = new Vector2(collision.transform.position.x + direction.x * pushForce, collision.transform.position.y + direction.y * pushForce);
             Destroy(gameObject);
         }
 

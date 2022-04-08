@@ -31,11 +31,11 @@ public class Boss : Enemy
     [SerializeField] float wallCheckRadius;
     [SerializeField] LayerMask wallLayer;
 
-    private bool isTouchingUp;
-    private bool isTouchingDown;
-    private bool isTouchingSide;
-    private bool goingUp;
-    private bool facingLeft = true;
+    [SerializeField] private bool isTouchingUp;
+    [SerializeField] private bool isTouchingDown;
+    [SerializeField] private bool isTouchingSide;
+    [SerializeField] private bool goingUp=true; 
+    [SerializeField] private bool facingLeft = true;
     protected override void Start()
     {
         base.Start();
@@ -48,22 +48,36 @@ public class Boss : Enemy
     // Update is called once per frame
     protected override void Update()
     {
-       // base.Update();
-        if (canMove==true) animator.SetTrigger("Walk");
-        else if (canMove==false) animator.SetTrigger("Idle");
-        if(canSpawn)
-        {
-            StartCoroutine(SpawnEnemy());
-        }
         GameManager.instance.bossHealthSlider.maxValue = maxHitpoint;
         GameManager.instance.bossHealthSlider.value = hitpoint;
-
         //
         isTouchingUp = Physics2D.OverlapCircle(wallCheckUp.position, wallCheckRadius, wallLayer);
         isTouchingDown = Physics2D.OverlapCircle(wallCheckDown.position, wallCheckRadius, wallLayer);
         isTouchingSide = Physics2D.OverlapCircle(wallCheckSide.position, wallCheckRadius, wallLayer);
 
-        IdleState();
+        Moving();
+
+        if (canSpawn)
+        {
+            //  StartCoroutine(SpawnEnemy());
+        }
+
+    }
+
+    private void Moving()
+    {
+        if (canMove == true) animator.SetTrigger("Walk");
+        else if (canMove == false) animator.SetTrigger("Idle");
+        if (hitpoint <= maxHitpoint / 2)
+        {
+            animator.SetTrigger("Spin");
+            IdleState();
+
+        }
+        else
+        {
+            // base.Update();
+        }
     }
 
     IEnumerator SpawnEnemy()
@@ -105,13 +119,13 @@ public class Boss : Enemy
         {
             ChangeDirection(); 
         }
-        rb.velocity = idleMoveSpeed * idleMoveDirection;
-        if (isTouchingSide )
+        
+       else if (isTouchingSide )
         {
             if (facingLeft) Flip();
             else if (!facingLeft) Flip();
         }
-
+        rb.velocity = idleMoveSpeed * idleMoveDirection;
 
     }
     void ChangeDirection()

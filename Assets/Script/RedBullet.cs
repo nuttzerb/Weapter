@@ -21,7 +21,7 @@ public class RedBullet : MonoBehaviour
             collision.GetComponent<Enemy>().TakeDamage(player.currentWeapon.damage);    
             direction = (collision.transform.position - transform.position).normalized;
                  collision.transform.position = new Vector2(collision.transform.position.x+ direction.x*pushForce , collision.transform.position.y+direction.y* pushForce);
-            Debug.Log(direction);
+          //  Debug.Log(direction);
             effect = Instantiate(effect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(effect, 1f);

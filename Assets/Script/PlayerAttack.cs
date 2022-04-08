@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform attackPos;
     [SerializeField] LayerMask whatIsEnemy;
     [SerializeField] SpriteRenderer swordSlash;
-
+    [SerializeField] float pushForce=0.2f;
     SpriteRenderer playerWeaponSpriteRenderer;
     [Header("BOW")]
     //BOW
@@ -125,6 +125,8 @@ public class PlayerAttack : MonoBehaviour
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, player.currentWeapon.attackRange, whatIsEnemy);
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
+                    direction = (enemiesToDamage[i].transform.position - transform.position).normalized;
+                    enemiesToDamage[i].transform.position = new Vector2(enemiesToDamage[i].transform.position.x + direction.x * pushForce, enemiesToDamage[i].transform.position.y + direction.y * pushForce);
                     enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(player.currentWeapon.damage);
 
                 }
@@ -199,6 +201,7 @@ public class PlayerAttack : MonoBehaviour
         Arrow arrow = Instantiate(player.currentWeapon.arrowPrefab, GameObject.Find("FirePoint").transform.position, rot).GetComponent<Arrow>();
         arrow.arrowVelocity = arrowSpeed; // co dinh
         float bowChargex10 = bowCharge * 10;
+        
        // print("float " + (int) bowChargex10);
         arrow.damage = player.currentWeapon.damage * (int)bowChargex10;
 
@@ -215,6 +218,6 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position,6f); // player.currentWeapon.attackRange);
+        Gizmos.DrawWireSphere(attackPos.position,player.currentWeapon.attackRange); // player.currentWeapon.attackRange);
     }
 }
