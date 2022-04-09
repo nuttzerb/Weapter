@@ -13,9 +13,9 @@ public class Boss : Enemy
     private Vector3 pos = new Vector3(1, 1, 0);
     private bool canSpawn=true;
     //Idle
-    [Header("Idle")]
-    [SerializeField] float idleMoveSpeed;
-    [SerializeField] Vector2 idleMoveDirection;
+    [Header("Spin")]
+    [SerializeField] float SpinMoveSpeed;
+    [SerializeField] Vector2 spinMoveDirection;
     //Attack Up N Down
     [Header("AttackUpNDown")]
     [SerializeField] float attackMoveSpeed;
@@ -27,20 +27,25 @@ public class Boss : Enemy
     [Header("Other")]
     [SerializeField] Transform wallCheckUp;
     [SerializeField] Transform wallCheckDown;
-    [SerializeField] Transform wallCheckSide;
+    [SerializeField] Transform wallCheckLeft;
+    [SerializeField] Transform wallCheckRight;
     [SerializeField] float wallCheckRadius;
     [SerializeField] LayerMask wallLayer;
 
-    [SerializeField] private bool isTouchingUp;
-    [SerializeField] private bool isTouchingDown;
-    [SerializeField] private bool isTouchingSide;
-    [SerializeField] private bool goingUp=true; 
-    [SerializeField] private bool facingLeft = true;
+    private bool isTouchingUp;
+    private bool isTouchingDown;
+    private bool isTouchingLeft;
+    private bool isTouchingRight;
+
+    private bool goingUp =true;
+    private bool facingLeft = true;
+
+
     protected override void Start()
     {
         base.Start();
         GameManager.instance.bossHealthSlider.gameObject.SetActive(true);
-        idleMoveDirection.Normalize();
+        spinMoveDirection.Normalize();
         attackMoveDirection.Normalize();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -51,9 +56,15 @@ public class Boss : Enemy
         GameManager.instance.bossHealthSlider.maxValue = maxHitpoint;
         GameManager.instance.bossHealthSlider.value = hitpoint;
         //
+        if (transform.localScale.x == -1) facingLeft = false;
+        else if (transform.localScale.x == 1) facingLeft = true;
+
+        //
         isTouchingUp = Physics2D.OverlapCircle(wallCheckUp.position, wallCheckRadius, wallLayer);
         isTouchingDown = Physics2D.OverlapCircle(wallCheckDown.position, wallCheckRadius, wallLayer);
-        isTouchingSide = Physics2D.OverlapCircle(wallCheckSide.position, wallCheckRadius, wallLayer);
+        isTouchingLeft = Physics2D.OverlapCircle(wallCheckLeft.position, wallCheckRadius, wallLayer);
+        isTouchingRight = Physics2D.OverlapCircle(wallCheckRight.position, wallCheckRadius, wallLayer);
+
 
         Moving();
 
@@ -70,13 +81,15 @@ public class Boss : Enemy
         else if (canMove == false) animator.SetTrigger("Idle");
         if (hitpoint <= maxHitpoint / 2)
         {
+            facingLeft = true;
+            transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
             animator.SetTrigger("Spin");
-            IdleState();
+            SpinState();
 
         }
         else
         {
-            // base.Update();
+             base.Update();
         }
     }
 
@@ -94,24 +107,18 @@ public class Boss : Enemy
         GameManager.instance.bossHealthSlider.gameObject.SetActive(false);
 
     }
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(wallCheckUp.position, wallCheckRadius);
-        Gizmos.DrawSphere(wallCheckDown.position, wallCheckRadius);
-        Gizmos.DrawSphere(wallCheckSide.position, wallCheckRadius);
 
-    }
     void Flip()
     {
         facingLeft = !facingLeft;
-        idleMoveDirection.x *= -1;
-        attackMoveDirection *= -1;
+        spinMoveDirection.x *= -1;
+        attackMoveDirection.x *= -1;
         transform.Rotate(0, 180, 0);
     }
-    void IdleState()
+    void SpinState()
     {
-        if(isTouchingUp && goingUp)
+
+        if (isTouchingUp && goingUp)
         {
             ChangeDirection();
         }
@@ -120,18 +127,27 @@ public class Boss : Enemy
             ChangeDirection(); 
         }
         
-       else if (isTouchingSide )
+       else if (isTouchingLeft || isTouchingRight )
         {
             if (facingLeft) Flip();
             else if (!facingLeft) Flip();
         }
-        rb.velocity = idleMoveSpeed * idleMoveDirection;
+        rb.velocity = SpinMoveSpeed * spinMoveDirection;
 
     }
     void ChangeDirection()
     {
         goingUp = !goingUp;
-        idleMoveDirection.y *= -1;
+        spinMoveDirection.y *= -1;
         attackMoveDirection.y *= -1;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawSphere(wallCheckUp.position, wallCheckRadius);
+        Gizmos.DrawSphere(wallCheckDown.position, wallCheckRadius);
+        Gizmos.DrawSphere(wallCheckLeft.position, wallCheckRadius);
+        Gizmos.DrawSphere(wallCheckRight.position, wallCheckRadius);
+
     }
 }

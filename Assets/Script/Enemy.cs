@@ -16,6 +16,7 @@ public class Enemy : Creature
 
     protected bool canMove =true;
     protected Rigidbody2D rb;
+
     protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();

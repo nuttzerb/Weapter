@@ -118,8 +118,7 @@ public class BattleSystem : MonoBehaviour
                 }
             }
             enemyInScene = GameObject.FindGameObjectsWithTag("Enemy");
-
-        }
+       }
         public void SpawnEnemy()
         {
             foreach (SpawnPoint spawnPoint in spawnPoints)

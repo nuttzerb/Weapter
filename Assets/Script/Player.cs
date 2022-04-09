@@ -15,7 +15,8 @@ public class Player : Creature
     private Vector3 movement;
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider2D;
- //   public SpriteRenderer playerSprite;
+    public Animator animator;
+    //   public SpriteRenderer playerSprite;
 /*    public PlayerProjectile playerProjectile;
     public HealthBar healthBar;*/
     //audio
@@ -26,10 +27,9 @@ public class Player : Creature
     protected override void Start()
     {
         base.Start();
-        // healthBar.SetMaxHealth(maxHitpoint);
-        //     playerProjectile.damagePoint = 1;
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         DontDestroyOnLoad(gameObject);
     }
     private void Update()
@@ -50,6 +50,7 @@ public class Player : Creature
         movement.y = Input.GetAxisRaw("Vertical");
         movement = new Vector3(movement.x, movement.y).normalized; // do lon cua vector = 1 
         dashKey = Input.GetButton("Jump");
+        animator.SetFloat("Walk", Mathf.Abs(movement.x));
     }
     IEnumerator Dash()
     {
@@ -63,6 +64,7 @@ public class Player : Creature
     {
         //di chuyen
         rb.velocity = new Vector3(movement.x * speed, movement.y * speed);
+
     }
 /*    public void SwapSprite(int skinId)
     {

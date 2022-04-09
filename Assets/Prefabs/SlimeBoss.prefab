@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883862350}
   m_Layer: 6
-  m_Name: WallCheckSide
+  m_Name: WallCheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -29,6 +29,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4525207457825929296}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1601300035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1601300036}
+  m_Layer: 6
+  m_Name: WallCheckRight
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1601300036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601300035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.75, y: -1.44, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4525207457825929296}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1678073785
 GameObject:
@@ -54,7 +84,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1678073785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.65, z: 0}
+  m_LocalPosition: {x: 0, y: -3.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525207457825929296}
@@ -84,7 +114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887962202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.66, z: 0}
+  m_LocalPosition: {x: 0, y: 0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4525207457825929296}
@@ -126,6 +156,7 @@ Transform:
   - {fileID: 1887962203}
   - {fileID: 1678073786}
   - {fileID: 883862350}
+  - {fileID: 1601300036}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -260,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
   hitpoint: 0
-  maxHitpoint: 100
+  maxHitpoint: 1000
   speed: 4
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
@@ -274,23 +305,19 @@ MonoBehaviour:
   maxTimebtwSpawn: 8
   enemyObject: {fileID: 1678033858249288534, guid: 3d9d0f75d76318a44952cd3a60f60638,
     type: 3}
-  idleMoveSpeed: 5
-  idleMoveDirection: {x: -1, y: 2}
+  SpinMoveSpeed: 8
+  spinMoveDirection: {x: -2, y: 3}
   attackMoveSpeed: 10
   attackMoveDirection: {x: -1, y: 5}
   attackPlayerSpeed: 20
   wallCheckUp: {fileID: 1887962203}
   wallCheckDown: {fileID: 1678073786}
-  wallCheckSide: {fileID: 883862350}
-  wallCheckRadius: 0.5
+  wallCheckLeft: {fileID: 883862350}
+  wallCheckRight: {fileID: 1601300036}
+  wallCheckRadius: 0.3
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
-  isTouchingUp: 0
-  isTouchingDown: 0
-  isTouchingSide: 0
-  goingUp: 1
-  facingLeft: 1
 --- !u!1001 &675868534011936406
 PrefabInstance:
   m_ObjectHideFlags: 0

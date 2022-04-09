@@ -20,7 +20,7 @@ MonoBehaviour:
   bullet:
   - {fileID: 0}
   fireRate: 1
-  attackRange: 0.6
+  attackRange: 0.3
   arrowPrefab: {fileID: 0}
   arrowGFX: {fileID: 0}
   bowCharge: {fileID: 0}
