@@ -126,8 +126,10 @@ public class PlayerAttack : MonoBehaviour
                 for (int i = 0; i < enemiesToDamage.Length; i++)
                 {
                     direction = (enemiesToDamage[i].transform.position - transform.position).normalized;
-                    enemiesToDamage[i].transform.position = new Vector2(enemiesToDamage[i].transform.position.x + direction.x * pushForce, enemiesToDamage[i].transform.position.y + direction.y * pushForce);
+                     enemiesToDamage[i].transform.position = new Vector2(enemiesToDamage[i].transform.position.x + direction.x * pushForce, enemiesToDamage[i].transform.position.y + direction.y * pushForce);
                     enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(player.currentWeapon.damage);
+                  
+
 
                 }
                 playerWeaponSpriteRenderer.enabled = false;

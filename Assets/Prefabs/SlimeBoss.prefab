@@ -291,7 +291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
   hitpoint: 0
-  maxHitpoint: 1000
+  maxHitpoint: 100
   speed: 4
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
@@ -305,7 +305,7 @@ MonoBehaviour:
   maxTimebtwSpawn: 8
   enemyObject: {fileID: 1678033858249288534, guid: 3d9d0f75d76318a44952cd3a60f60638,
     type: 3}
-  SpinMoveSpeed: 8
+  SpinMoveSpeed: 15
   spinMoveDirection: {x: -2, y: 3}
   attackMoveSpeed: 10
   attackMoveDirection: {x: -1, y: 5}

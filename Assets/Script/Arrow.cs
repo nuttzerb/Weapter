@@ -31,12 +31,18 @@ public class Arrow : MonoBehaviour
             }
             direction = (collision.transform.position - transform.position).normalized;
             collision.transform.position = new Vector2(collision.transform.position.x + direction.x * pushForce, collision.transform.position.y + direction.y * pushForce);
-            Destroy(gameObject);
+            
+            this.transform.parent = collision.transform;
+            arrowVelocity = 0;
+            Destroy(gameObject,15f);
+
         }
 
         if (collision.tag == "Edge")
         {
-            Destroy(gameObject);
+            this.transform.parent = collision.transform;
+            arrowVelocity = 0;
+            Destroy(gameObject, 15f);
         }
     }
 }

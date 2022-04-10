@@ -27,7 +27,6 @@ public class CharacterMenu : MonoBehaviour
             currentCharacterSelection--;
             if (currentCharacterSelection<0)
                 currentCharacterSelection = GameManager.instance.playerSprites.Count-1;
-
             OnSelectionChange();
         }
     }

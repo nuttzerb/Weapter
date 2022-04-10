@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class Player : Creature
 {   
-
+    [Header("Dash")]
     public float dashRange = 50f;
     public float timeBetweenDash = 1f;
     private bool dashKey;
     private bool canDash = true;
+    private bool isDashing = false;
+    private Vector2 dashDir;
+
     public bool isAlive = true;
 
     public Weapon currentWeapon;
@@ -41,7 +44,25 @@ public class Player : Creature
         if (isAlive)
         {
             Move();
-            if (canDash && dashKey) StartCoroutine(Dash());
+            if (canDash && dashKey)
+            {
+                animator.SetTrigger("Dash");
+
+                isDashing = true;
+                canDash = false;
+                dashDir = new Vector2(movement.x, movement.y);
+                if (dashDir == Vector2.zero)
+                {
+                    dashDir = new Vector2(transform.localScale.x, transform.localScale.y);
+                }
+                StartCoroutine(StopDashing());
+
+            }
+            if (isDashing)
+            {
+                rb.velocity = dashDir.normalized * dashRange;
+                return;
+            }
         }
     }
     private void TakeInput()
@@ -51,13 +72,13 @@ public class Player : Creature
         movement = new Vector3(movement.x, movement.y).normalized; // do lon cua vector = 1 
         dashKey = Input.GetButton("Jump");
         animator.SetFloat("Walk", Mathf.Abs(movement.x));
+        animator.SetFloat("Walk", Mathf.Abs(movement.y));
+
     }
-    IEnumerator Dash()
+    IEnumerator StopDashing()
     {
-        canDash = false;
-        rb.velocity = new Vector2(movement.x * dashRange, movement.y * dashRange);
-        // audioSource.PlayOneShot(dashAudio);
         yield return new WaitForSeconds(timeBetweenDash);
+        isDashing = false;
         canDash = true;
     }
     private void Move()
@@ -100,7 +121,6 @@ public class Player : Creature
         }
 //        GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.red, transform.position, Vector3.up * 30, 1.0f);
       //  audioSource.PlayOneShot(healAudio);
-
     }
     public override void TakeDamage(int damage)
     {
