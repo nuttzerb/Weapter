@@ -14,6 +14,7 @@ public class Enemy : Creature
     [SerializeField] protected float stoppingDistance;
     protected Animator animator;
 
+    bool isDrop=true;
     protected bool canMove =true;
     protected Rigidbody2D rb;
 
@@ -70,10 +71,10 @@ public class Enemy : Creature
 
     protected override void Death()
     {
-        if(lootDrop!=null)
+        if(lootDrop!=null && isDrop)
         {
+            isDrop = false;
             Instantiate(lootDrop, transform.position, Quaternion.identity);
-
         }
         base.Death();
         animator.SetTrigger("Dead");

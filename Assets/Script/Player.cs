@@ -71,8 +71,7 @@ public class Player : Creature
         movement.y = Input.GetAxisRaw("Vertical");
         movement = new Vector3(movement.x, movement.y).normalized; // do lon cua vector = 1 
         dashKey = Input.GetButton("Jump");
-        animator.SetFloat("Walk", Mathf.Abs(movement.x));
-        animator.SetFloat("Walk", Mathf.Abs(movement.y));
+        animator.SetFloat("Walk", Mathf.Abs(movement.x + movement.y));
 
     }
     IEnumerator StopDashing()

@@ -39,8 +39,9 @@ public class Boss : Enemy
 
     private bool goingUp =true;
     private bool facingLeft = true;
-
-
+    private bool isSpining = false;
+    Vector2 direction;
+    [SerializeField] float pushForce = 5f;
     protected override void Start()
     {
         base.Start();
@@ -117,7 +118,7 @@ public class Boss : Enemy
     }
     void SpinState()
     {
-
+        isSpining = true;
         if (isTouchingUp && goingUp)
         {
             ChangeDirection();
@@ -149,5 +150,17 @@ public class Boss : Enemy
         Gizmos.DrawSphere(wallCheckLeft.position, wallCheckRadius);
         Gizmos.DrawSphere(wallCheckRight.position, wallCheckRadius);
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag=="Player" && isSpining)
+        {
+            collision.GetComponent<Player>().TakeDamage(2);
+
+            direction = (collision.transform.position - transform.position).normalized;
+            collision.transform.position = new Vector2(collision.transform.position.x - direction.x * pushForce, collision.transform.position.y - direction.y * pushForce);
+
+        }
     }
 }

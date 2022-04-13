@@ -9,6 +9,7 @@ public class Arrow : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float pushForce;
     Vector2 direction;
+    BoxCollider2D boxCollider2D;
     private void Start()
     {
 
@@ -34,6 +35,7 @@ public class Arrow : MonoBehaviour
             
             this.transform.parent = collision.transform;
             arrowVelocity = 0;
+            boxCollider2D.enabled = false;
             Destroy(gameObject,15f);
 
         }

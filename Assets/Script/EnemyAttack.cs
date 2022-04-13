@@ -7,7 +7,9 @@ public class EnemyAttack : MonoBehaviour
     private GameObject[] spell;
     public GameObject projectile;
     public Transform player;
-    //  public int damage = 5;
+
+    Vector2 direction;
+
     public float distanceToShoot = 20;
     [SerializeField] int numShootAura = 10;
     public float projectileForce = 2;
@@ -18,6 +20,10 @@ public class EnemyAttack : MonoBehaviour
         player = GameObject.Find("Player").transform;
         StartCoroutine(ShootAura(numShootAura));
 
+    }
+
+    private void Update()
+    {
     }
 
     IEnumerator ShootPlayer()
@@ -32,6 +38,7 @@ public class EnemyAttack : MonoBehaviour
             Vector2 direction = (playerPos - myPos).normalized; // lay gia tri
             spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce; // van toc
             StartCoroutine(ShootPlayer());
+
         }
     }
     IEnumerator ShootAura(int num)
@@ -43,11 +50,11 @@ public class EnemyAttack : MonoBehaviour
             for (int i = 0; i < num; i++)
             {
                 spell[i] = Instantiate(projectile, transform.position, Quaternion.identity);
-                spell[i].GetComponent<Rigidbody2D>().velocity = new Vector2(transform.position.x, transform.position.y + (i+50)) * projectileForce; // velocity - van toc
+                spell[i].GetComponent<Rigidbody2D>().velocity = new Vector2(transform.position.x, transform.position.y + i * 10) * projectileForce; // velocity - van toc
                 Destroy(spell[i], 1f);
             }
-
             StartCoroutine(ShootAura(num));
+
         }
     }
 }
