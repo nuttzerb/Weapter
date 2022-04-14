@@ -42,6 +42,12 @@ public class Boss : Enemy
     private bool isSpining = false;
     Vector2 direction;
     [SerializeField] float pushForce = 5f;
+
+    [Header("Shot")]
+    public int projectileForce = 10;
+    private GameObject[] spell;
+    public Transform[] firePoints;
+    public GameObject projectile;
     protected override void Start()
     {
         base.Start();
@@ -49,11 +55,13 @@ public class Boss : Enemy
         spinMoveDirection.Normalize();
         attackMoveDirection.Normalize();
         rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(ShootAura(firePoints.Length));
     }
 
     // Update is called once per frame
     protected override void Update()
     {
+      
         GameManager.instance.bossHealthSlider.maxValue = maxHitpoint;
         GameManager.instance.bossHealthSlider.value = hitpoint;
         //
@@ -75,7 +83,23 @@ public class Boss : Enemy
         }
 
     }
+    IEnumerator ShootAura(int num)
+    {
+        yield return new WaitForSeconds(Random.Range(3, 5));
+        if (player != null)
+        {
+            spell = new GameObject[num];
+            for (int i = 0; i < num; i++)
+            {
+                spell[i] = Instantiate(projectile, transform.position, Quaternion.identity);
+                direction = (firePoints[i].position - spell[i].transform.position).normalized;
+                spell[i].GetComponent<Rigidbody2D>().velocity = direction * projectileForce / 2; // velocity - van toc
+                Destroy(spell[i], 2f);
+            }
+            StartCoroutine(ShootAura(num));
 
+        }
+    }
     private void Moving()
     {
         if (canMove == true) animator.SetTrigger("Walk");
@@ -90,7 +114,7 @@ public class Boss : Enemy
         }
         else
         {
-             base.Update();
+          //  base.Update();
         }
     }
 
@@ -163,4 +187,5 @@ public class Boss : Enemy
 
         }
     }
+
 }

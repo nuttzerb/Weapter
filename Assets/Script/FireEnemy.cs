@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public class FireEnemy : Enemy
 {
     private GameObject[] spell;
+    public Transform[] firePoints;
     public GameObject projectile;
-    public Transform player;
 
     Vector2 direction;
 
@@ -15,15 +15,17 @@ public class EnemyAttack : MonoBehaviour
     public float projectileForce = 2;
     public float minCooldown = 2f;
     public float maxCooldown = 4f;
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         player = GameObject.Find("Player").transform;
+        StartCoroutine(ShootAura(firePoints.Length));
         StartCoroutine(ShootPlayer());
-
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
     }
 
     IEnumerator ShootPlayer()
@@ -38,20 +40,20 @@ public class EnemyAttack : MonoBehaviour
             Vector2 direction = (playerPos - myPos).normalized; // lay gia tri
             spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce; // van toc
             StartCoroutine(ShootPlayer());
-
         }
     }
     IEnumerator ShootAura(int num)
     {
-        yield return new WaitForSeconds(Random.Range(minCooldown, maxCooldown));
+        yield return new WaitForSeconds(Random.Range(minCooldown*2, maxCooldown*2));
         if (player != null)
         {
             spell = new GameObject[num];
             for (int i = 0; i < num; i++)
             {
                 spell[i] = Instantiate(projectile, transform.position, Quaternion.identity);
-                spell[i].GetComponent<Rigidbody2D>().velocity = new Vector2(transform.position.x, transform.position.y + i * 10) * projectileForce; // velocity - van toc
-                Destroy(spell[i], 1f);
+                direction = (firePoints[i].position - spell[i].transform.position).normalized;
+                spell[i].GetComponent<Rigidbody2D>().velocity = direction * projectileForce/2; // velocity - van toc
+                Destroy(spell[i], 2f);
             }
             StartCoroutine(ShootAura(num));
 
