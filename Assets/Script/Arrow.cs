@@ -35,7 +35,7 @@ public class Arrow : MonoBehaviour
             
             this.transform.parent = collision.transform;
             arrowVelocity = 0;
-            boxCollider2D.enabled = false;
+         //   boxCollider2D.enabled = false;
             Destroy(gameObject,15f);
 
         }

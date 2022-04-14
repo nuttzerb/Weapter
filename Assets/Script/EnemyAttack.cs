@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
     private void Start()
     {
         player = GameObject.Find("Player").transform;
-        StartCoroutine(ShootAura(numShootAura));
+        StartCoroutine(ShootPlayer());
 
     }
 

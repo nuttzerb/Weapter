@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Slider bossHealthSlider;
     [Header("---")]
     public static GameManager instance;
+
     //resources
     public List<Sprite> playerSprites;
 

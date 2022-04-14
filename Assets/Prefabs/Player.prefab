@@ -229,7 +229,7 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 93b6278c7cc4fad4ab4d01279d8a2768, type: 3}
+  m_Sprite: {fileID: 301738868788683129, guid: 11493fd84e7e7844498ab48dc1ca2efa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -256,6 +256,7 @@ GameObject:
   - component: {fileID: 2108706403}
   - component: {fileID: 3679804149955519295}
   - component: {fileID: 3679804149955519296}
+  - component: {fileID: 349744528}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -298,7 +299,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a9f84881abde25b48904c0ff67bca145, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -318,7 +319,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e2129bf438110204280069070c4487ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -397,10 +398,11 @@ MonoBehaviour:
   dashRange: 10
   timeBetweenDash: 0.5
   isAlive: 1
-  currentWeapon: {fileID: 11400000, guid: 4ff6a8bb7e1864442961a736eb405931, type: 2}
+  currentWeapon: {fileID: 11400000, guid: f47e844be8fd2714ba22685a60cb4419, type: 2}
   rb: {fileID: 3679804149881056602}
   boxCollider2D: {fileID: 3679804149881056603}
   animator: {fileID: 0}
+  flashEffect: {fileID: 349744528}
   audioSource: {fileID: 0}
   deadAudio: {fileID: 0}
   dashAudio: {fileID: 0}
@@ -478,6 +480,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &349744528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679804149881056607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9a9055709a1d141879270f46692412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 0b22db93491bae04a8ed3d3b316b7289, type: 2}
+  duration: 0.125
 --- !u!1001 &3153793648461522606
 PrefabInstance:
   m_ObjectHideFlags: 0

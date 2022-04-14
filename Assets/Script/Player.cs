@@ -19,9 +19,9 @@ public class Player : Creature
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider2D;
     public Animator animator;
-    //   public SpriteRenderer playerSprite;
-/*    public PlayerProjectile playerProjectile;
-    public HealthBar healthBar;*/
+
+    [SerializeField] FlashEffect flashEffect;
+
     //audio
     public AudioSource audioSource;
     public AudioClip deadAudio;
@@ -125,5 +125,6 @@ public class Player : Creature
     {
         base.TakeDamage(damage);
         GameManager.instance.playerHealth.SetHealth(hitpoint); // xem lai sau
+        flashEffect.Flash();
     }
 }
