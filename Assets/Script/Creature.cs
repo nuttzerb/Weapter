@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
-    public GameObject floatingTextPrefab;
-
     //public
     public int hitpoint;
     public int maxHitpoint = 10;
@@ -14,7 +12,6 @@ public class Creature : MonoBehaviour
     //immunity
     protected float immuneTime = 1.0f;
     protected float lastImmune;
-
     //push
     protected Vector3 pushDirection;
 

@@ -12,6 +12,7 @@ public class Boss : Enemy
     [SerializeField] GameObject enemyObject;
     private Vector3 pos = new Vector3(1, 1, 0);
     private bool canSpawn=true;
+   
     //Idle
     [Header("Spin")]
     [SerializeField] float SpinMoveSpeed;
@@ -31,6 +32,7 @@ public class Boss : Enemy
     [SerializeField] Transform wallCheckRight;
     [SerializeField] float wallCheckRadius;
     [SerializeField] LayerMask wallLayer;
+    [SerializeField] float pushForce = 5f;
 
     private bool isTouchingUp;
     private bool isTouchingDown;
@@ -41,13 +43,16 @@ public class Boss : Enemy
     private bool facingLeft = true;
     private bool isSpining = false;
     Vector2 direction;
-    [SerializeField] float pushForce = 5f;
 
     [Header("Shot")]
     public int projectileForce = 10;
-    private GameObject[] spell;
-    public Transform[] firePoints;
+    private GameObject[] spellCircle;
+    private GameObject[] spellToward;
+
+    public Transform[] firePointsCirle;
+    public Transform[] firePointsToward;
     public GameObject projectile;
+
     protected override void Start()
     {
         base.Start();
@@ -55,13 +60,16 @@ public class Boss : Enemy
         spinMoveDirection.Normalize();
         attackMoveDirection.Normalize();
         rb = GetComponent<Rigidbody2D>();
-        StartCoroutine(ShootAura(firePoints.Length));
+        StartCoroutine(ShootCircle(firePointsCirle.Length));
+        StartCoroutine(ShootToward(firePointsToward.Length));
+        StartCoroutine(ShootPlayer());
+
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-      
+        
         GameManager.instance.bossHealthSlider.maxValue = maxHitpoint;
         GameManager.instance.bossHealthSlider.value = hitpoint;
         //
@@ -75,36 +83,66 @@ public class Boss : Enemy
         isTouchingRight = Physics2D.OverlapCircle(wallCheckRight.position, wallCheckRadius, wallLayer);
 
 
-        Moving();
+        BossMechanic();
 
-        if (canSpawn)
-        {
-            //  StartCoroutine(SpawnEnemy());
-        }
+
 
     }
-    IEnumerator ShootAura(int num)
+    IEnumerator ShootCircle(int num)
+    {
+        yield return new WaitForSeconds(Random.Range(4, 6));
+        if (player != null)
+        {
+            spellCircle = new GameObject[num];
+            for (int i = 0; i < num; i++)
+            {
+                spellCircle[i] = Instantiate(projectile, transform.position, Quaternion.identity);
+                direction = (firePointsCirle[i].position - spellCircle[i].transform.position).normalized;
+                spellCircle[i].GetComponent<Rigidbody2D>().velocity = direction * projectileForce ; // velocity - van toc
+                Destroy(spellCircle[i], 2f);
+            }
+            StartCoroutine(ShootCircle(num));
+
+        }
+    }
+    IEnumerator ShootToward(int num)
     {
         yield return new WaitForSeconds(Random.Range(3, 5));
         if (player != null)
         {
-            spell = new GameObject[num];
+            spellToward = new GameObject[num];
             for (int i = 0; i < num; i++)
             {
-                spell[i] = Instantiate(projectile, transform.position, Quaternion.identity);
-                direction = (firePoints[i].position - spell[i].transform.position).normalized;
-                spell[i].GetComponent<Rigidbody2D>().velocity = direction * projectileForce / 2; // velocity - van toc
-                Destroy(spell[i], 2f);
+                spellToward[i] = Instantiate(projectile, transform.position, Quaternion.identity);
+                direction = (firePointsToward[i].position - spellToward[i].transform.position).normalized;
+                spellToward[i].GetComponent<Rigidbody2D>().velocity = direction * projectileForce ; // velocity - van toc
+                Destroy(spellToward[i], 2f);
             }
-            StartCoroutine(ShootAura(num));
+            StartCoroutine(ShootToward(num));
 
         }
     }
-    private void Moving()
+    IEnumerator ShootPlayer()
     {
+        yield return new WaitForSeconds(Random.Range(1, 3));
+        if (player != null)
+        {
+
+            GameObject spell = Instantiate(projectile, transform.position, Quaternion.identity);
+            Vector2 myPos = transform.position;
+            Vector2 playerPos = player.position;
+            Vector2 direction = (playerPos - myPos).normalized; // lay gia tri
+            spell.GetComponent<Rigidbody2D>().velocity = direction * projectileForce; // van toc
+            StartCoroutine(ShootPlayer());
+        }
+    }
+    private void BossMechanic()
+    {
+        float firstHealth = maxHitpoint*2/3;
+        float secondHealth = maxHitpoint*1/5;
         if (canMove == true) animator.SetTrigger("Walk");
-        else if (canMove == false) animator.SetTrigger("Idle");
-        if (hitpoint <= maxHitpoint / 2)
+
+        if (hitpoint <= secondHealth)
         {
             facingLeft = true;
             transform.localScale = new Vector3(1, transform.localScale.y, transform.localScale.z);
@@ -112,9 +150,17 @@ public class Boss : Enemy
             SpinState();
 
         }
+        else if(hitpoint<= firstHealth && hitpoint > secondHealth)
+        {
+            if (canSpawn)
+            {
+                StartCoroutine(SpawnEnemy());
+            }
+            base.Update();
+        }
         else
         {
-          //  base.Update();
+            base.Update();
         }
     }
 

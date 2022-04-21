@@ -34,7 +34,7 @@ public class WeaponPickup : MonoBehaviour
 
     private void Pickup(Collider2D collision)
     {
-        GameManager.instance.ShowText(weapon.name, 20, Color.white, transform.position, Vector3.one, 1f);
+        GameManager.instance.ShowText(weapon.name, 24, Color.white, transform.position, Vector3.one, 1f);
         playerWeaponSpriteRenderer = collision.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>();
         //bien tam
         tempWeapon = collision.GetComponent<Player>().currentWeapon;

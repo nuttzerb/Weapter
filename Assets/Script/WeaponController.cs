@@ -14,7 +14,7 @@ public class WeaponController : MonoBehaviour
     {
         Vector2 dir = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
         
-       float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+       float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg; // 180/pi
         
 
         if(dir.x<0)

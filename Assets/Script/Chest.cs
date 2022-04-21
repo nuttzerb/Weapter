@@ -12,7 +12,7 @@ public class Chest : MonoBehaviour
 
     private void Start()
     {
-        amount = Random.Range(1, 10);
+        amount = Random.Range(5, 10);
         //  audioSource = GetComponent<AudioSource>();
       //  player = FindObjectOfType<Player>();
     }
@@ -29,8 +29,9 @@ public class Chest : MonoBehaviour
                 OnCollect();
             }
             GetComponent<SpriteRenderer>().sprite = emptyChest;
-              GameManager.instance.ShowText("+" + amount + " coin", 36, Color.yellow, transform.position, Vector3.one, 1.0f);
-              GameManager.instance.coins += amount;
+            GameManager.instance.coins += amount;
+            GameManager.instance.ShowText("+" + amount.ToString() + " coins", 25, Color.yellow, transform.position, Vector3.up * 30, 0.7f);
+
             // audioSource.Play();
         }
     }

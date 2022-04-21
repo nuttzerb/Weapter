@@ -11,7 +11,6 @@ public class FireEnemy : Enemy
     Vector2 direction;
 
     public float distanceToShoot = 20;
-    [SerializeField] int numShootAura = 10;
     public float projectileForce = 2;
     public float minCooldown = 2f;
     public float maxCooldown = 4f;

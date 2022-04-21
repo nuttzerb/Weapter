@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3820711966388350957}
   - component: {fileID: 3820711966388350956}
+  - component: {fileID: 271993590}
+  - component: {fileID: 271993593}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -43,7 +45,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9f54a575ba7414ab4e52fbb06721cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprites: []
   player: {fileID: 0}
-  enemyCount: 0
+  playerHealthUI: {fileID: 0}
+  canvas: {fileID: 0}
+  pauseMenu: {fileID: 0}
+  HUD: {fileID: 0}
+  floatingTextManager: {fileID: 0}
+  cameraShake: {fileID: 0}
+  duration: 0.4
+  magnitude: 0.15
+  bossHealthSlider: {fileID: 0}
   coins: 0
+  haveKey: 0
+  playerSprites:
+  - {fileID: 21300000, guid: e2129bf438110204280069070c4487ec, type: 3}
+  - {fileID: 8177203260375688589, guid: d2da1f69eed849142a531a4d81e72519, type: 3}
+  - {fileID: -3163861510159893632, guid: d2da1f69eed849142a531a4d81e72519, type: 3}
+  - {fileID: 4332630308760004205, guid: d2da1f69eed849142a531a4d81e72519, type: 3}
+--- !u!114 &271993590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820711966388350931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c4e68218024b774293eca1914f51cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlButton:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &271993593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820711966388350931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495c62db8b39175489d374d22e7fa02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

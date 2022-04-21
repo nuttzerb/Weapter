@@ -14,6 +14,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleColliderTrigger colliderTrigger;
     [SerializeField] GameObject wallZone;
     [SerializeField] GameObject wallZonemMinimap;
+    [SerializeField] GameObject chest;
 
     private State state;
     private void Awake()
@@ -25,7 +26,10 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         colliderTrigger.OnPlayerEnterTrigger += ColliderTrigger_OnPlayerEnterTrigger;
-       
+        foreach (Wave wave in waveArray)
+        {
+            wave.Start();
+        }
     }
 
     private void ColliderTrigger_OnPlayerEnterTrigger(object sender, System.EventArgs e)
@@ -39,7 +43,7 @@ public class BattleSystem : MonoBehaviour
 
     private void StartBattle()
     {
-        Debug.Log("Start Battle");
+     //   Debug.Log("Start Battle");
         state = State.Active;
         StartCoroutine(GameManager.instance.cameraShake.Shake(GameManager.instance.duration, GameManager.instance.magnitude));
 
@@ -55,13 +59,13 @@ public class BattleSystem : MonoBehaviour
                 {
                     wave.Update();
                 }
-                TestBattleOVer();
+                BattleOVer();
                 break;
         }
 
   
     }
-    private void TestBattleOVer()
+    private void BattleOVer()
     {
         if(state == State.Active)
         {
@@ -70,7 +74,8 @@ public class BattleSystem : MonoBehaviour
                 state = State.BattleOver;
                 wallZone.SetActive(false);
                 wallZonemMinimap.SetActive(false);
-                Debug.Log("BattleOver");
+                Instantiate(chest, transform.position, Quaternion.identity);
+              //  Debug.Log("BattleOver");
             }
         }
     }
@@ -82,7 +87,7 @@ public class BattleSystem : MonoBehaviour
             if(wave.isWaveOver())
             {
                 // wave is over
-               // return true; //ket thuc 1 wave
+               // return true; //ket thuc 1 wave, chua duoc
             }
             else
             {
@@ -98,9 +103,14 @@ public class BattleSystem : MonoBehaviour
     {
         [SerializeField] private SpawnPoint[] spawnPoints;
         [SerializeField] private float timer;
-        [SerializeField] public int numOfEnemies;
+        //[SerializeField] int numOfEnemies;
+        private int numOfEnemies;
         public GameObject[] enemyInScene;
 
+        public void Start()
+        {
+            numOfEnemies = spawnPoints.Length;
+        }
         public void Update()
         {
         //    Debug.Log(enemyInScene.Length);

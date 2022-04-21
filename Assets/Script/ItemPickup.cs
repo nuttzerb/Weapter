@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    [SerializeField] enum PickupObject { Coin, Something };
+    [SerializeField] enum PickupObject { Coin, Key, Somthing };
     [SerializeField] PickupObject currentObject;
     [SerializeField] int pickupQuantity;
 
@@ -15,6 +15,10 @@ public class ItemPickup : MonoBehaviour
             if(currentObject == PickupObject.Coin)
             {
                 GameManager.instance.coins += pickupQuantity;
+            }
+            if (currentObject == PickupObject.Key)
+            {
+                GameManager.instance.haveKey =true;
             }
             Destroy(gameObject);
         }

@@ -229,7 +229,8 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 301738868788683129, guid: 11493fd84e7e7844498ab48dc1ca2efa, type: 3}
+  m_Sprite: {fileID: 8333481726314500824, guid: 69e0ade04eab5dd42846957789b262f0,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -319,7 +320,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e2129bf438110204280069070c4487ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -391,14 +392,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingTextPrefab: {fileID: 0}
-  hitpoint: 0
+  hitpoint: 9
   maxHitpoint: 9
   speed: 6
   spriteRenderer: {fileID: 3679804149881056606}
   dashRange: 10
   timeBetweenDash: 0.5
   isAlive: 1
-  currentWeapon: {fileID: 11400000, guid: f47e844be8fd2714ba22685a60cb4419, type: 2}
+  currentWeapon: {fileID: 11400000, guid: 656bf883f1643b34f88724368f50d9fe, type: 2}
   rb: {fileID: 3679804149881056602}
   boxCollider2D: {fileID: 3679804149881056603}
   animator: {fileID: 0}

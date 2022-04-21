@@ -50,23 +50,26 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        switch (player.currentWeapon.weaponType)
+        if(player.isAlive)
         {
-            case (Weapon.WeaponType.Gun): 
-                GunAttack(); 
-                break;
-            case (Weapon.WeaponType.Shotgun):
-                ShotgunAttack();
-                break;
-            case (Weapon.WeaponType.Sword):
-                SwordAttack();
-                break;
-            case (Weapon.WeaponType.Bow):
-                BowAttack();
-                break;
-            default: break;
+            switch (player.currentWeapon.weaponType)
+            {
+                case (Weapon.WeaponType.Gun):
+                    GunAttack();
+                    break;
+                case (Weapon.WeaponType.Shotgun):
+                    ShotgunAttack();
+                    break;
+                case (Weapon.WeaponType.Sword):
+                    SwordAttack();
+                    break;
+                case (Weapon.WeaponType.Bow):
+                    BowAttack();
+                    break;
+                default: break;
+            }
         }
+
     }
 
     private  void ShotgunAttack()

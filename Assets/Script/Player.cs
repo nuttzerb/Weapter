@@ -19,7 +19,6 @@ public class Player : Creature
     public Rigidbody2D rb;
     public BoxCollider2D boxCollider2D;
     public Animator animator;
-
     [SerializeField] FlashEffect flashEffect;
 
     //audio
@@ -27,19 +26,21 @@ public class Player : Creature
     public AudioClip deadAudio;
     public AudioClip dashAudio;
     public AudioClip healAudio;
+
     protected override void Start()
     {
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-        DontDestroyOnLoad(gameObject);
+        transform.position = GameObject.FindGameObjectWithTag("StartPoint").transform.position;
+        //  DontDestroyOnLoad(gameObject);
     }
     private void Update()
     {
-        TakeInput();
+        if(isAlive) TakeInput();
     }
-    void FixedUpdate()
+    void FixedUpdate() // co dinh
     {
         if (isAlive)
         {
@@ -65,6 +66,8 @@ public class Player : Creature
             }
         }
     }
+
+    
     private void TakeInput()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -118,13 +121,16 @@ public class Player : Creature
         {
             hitpoint = maxHitpoint;
         }
-//        GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.red, transform.position, Vector3.up * 30, 1.0f);
-      //  audioSource.PlayOneShot(healAudio);
+        GameManager.instance.playerHealthUI.SetHealth(hitpoint);
+        GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.red, transform.position, Vector3.up * 30, 0.7f);
+
+
+        //  audioSource.PlayOneShot(healAudio);
     }
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        GameManager.instance.playerHealth.SetHealth(hitpoint); // xem lai sau
+        GameManager.instance.playerHealthUI.SetHealth(hitpoint); // xem lai sau
         flashEffect.Flash();
     }
 }

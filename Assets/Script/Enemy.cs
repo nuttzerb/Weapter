@@ -84,7 +84,7 @@ public class Enemy : Creature
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        GameManager.instance.ShowText("" + damage + "", 24, Color.red, transform.position, Vector3.one, .3f);
+        GameManager.instance.ShowText("" + damage + "", 24, Color.red, transform.position, Vector3.one, .4f);
 
     }
 }

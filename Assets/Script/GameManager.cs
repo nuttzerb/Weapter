@@ -1,51 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Reference")]
+    public static GameManager instance;
+    public Player player;
+    public PlayerHealthUI playerHealthUI;
+    public GameObject canvas;
+    public GameObject pauseMenu;
+    public GameObject HUD;
+    public FloatingTextManager floatingTextManager;
+   
     [Header("Camera Shake")]
     public CameraShake cameraShake;
     public float duration=0.4f;
     public float magnitude=0.15f;
+
     [Header("Boss")]
     public Slider bossHealthSlider;
-    [Header("---")]
-    public static GameManager instance;
 
-    //resources
+    [Header("Currency")]
+    // int enemyCount = 0;
+    public int coins;
+    public bool haveKey=false;
+    [Header("Sprite")]
     public List<Sprite> playerSprites;
 
-    //references
-    public Player player;
-    public PlayerHealth playerHealth;
-   // public Weapon weapon;
-    public FloatingTextManager floatingTextManager;
+    //resources
+
+
     /*  public Animator deadMenuAnimator;
       public Animator resultMenuAnimator;
       public Animator characterMenuAnimator;*/
     // public ResultMenu resultMenu;
 
-    // int enemyCount = 0;
-    public int coins;
     private void Awake()
     {
         if (GameManager.instance != null)
         {
             Destroy(gameObject);
-            Destroy(player.gameObject);
-            Destroy(floatingTextManager.gameObject);
+         Destroy(player.gameObject);
+        Destroy(floatingTextManager.gameObject);
             return;
         }
          instance = this; // quan trong
-                          //   ResetState();
-      playerHealth.SetMaxHealth(player.maxHitpoint);
+         playerHealthUI.SetMaxHealth(player.maxHitpoint);
+
+        
         cameraShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
 
-        /* SceneManager.sceneLoaded += LoadState;
-         DontDestroyOnLoad(gameObject);*/
+        SceneManager.sceneLoaded += LoadState;
+
+        DontDestroyOnLoad(canvas);
+        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(player);
+        DontDestroyOnLoad(cameraShake);
+        DontDestroyOnLoad(HUD);
+        DontDestroyOnLoad(pauseMenu);
     }
 
     public void ShowText(string msg, int fontSize,  Color color, Vector3 position,Vector3 motion, float duration)
@@ -93,42 +109,39 @@ public class GameManager : MonoBehaviour
         string s = "";
         s += "0" + "|"; //player skin
         s += coins.ToString() + "|";
-     //   s += experience.ToString() + "|";
-     //   s += weapon.weaponLevel.ToString();
         //s += player.hitpoint.ToString();
         PlayerPrefs.SetString("SaveState", s);
-        //   Debug.Log("SaveState");
+        Debug.Log("SaveState");
     }
     public void ResetState()
     {
         string s = "";
         s += "0" + "|"; //skin
         s += "0" + "|";// coin
-        s += "0" + "|";//exp
-        s += "0";//weapon level
-                 // s += "0"; //hit point
+        // s += "0"; //hit point
         PlayerPrefs.SetString("SaveState", s);
         //  Debug.Log("ResetState");
     }
-/*    public void LoadState(Scene s, LoadSceneMode mode)
+    public void LoadState(Scene s, LoadSceneMode mode)
     {
         if (!PlayerPrefs.HasKey("SaveState"))
         {
             return;
         }
-        string[] data = PlayerPrefs.GetString("SaveState").Split('|');
-        // change player skin
-        coins = int.Parse(data[1]);
-        //experience
-        experience = int.Parse(data[2]);
-        *//*        if (GetCurrentLevel() != 1)
-                    player.SetLevel(GetCurrentLevel());*//*
-        //change weapon level
-        weapon.SetWeaponLevel(weapon.weaponLevel = int.Parse(data[3]));
-        //  player.hitpoint = int.Parse(data[4]);
-        //  Debug.Log("LoadState");
-        if (!GameObject.Find("SpawnPoint")) return;
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
 
-    }*/
+        /*      string[] data = PlayerPrefs.GetString("SaveState").Split('|');
+              // change player skin
+              coins = int.Parse(data[1]);
+              //experience
+              experience = int.Parse(data[2]);
+              if (GetCurrentLevel() != 1)
+                  player.SetLevel(GetCurrentLevel());
+              //change weapon level
+              weapon.SetWeaponLevel(weapon.weaponLevel = int.Parse(data[3]));*/
+        //  player.hitpoint = int.Parse(data[4]);
+          Debug.Log("LoadState");
+        if (!GameObject.Find("StartPoint")) return;
+        player.transform.position = GameObject.Find("StartPoint").transform.position;
+
+    }
 }
