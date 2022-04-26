@@ -14,7 +14,7 @@ public class CharacterMenu : MonoBehaviour
 
     public void OnArrowClick(bool right)
     {
-        if(right)
+        if (right)
         {
             currentCharacterSelection++;
             if (currentCharacterSelection == GameManager.instance.playerSprites.Count)
@@ -25,8 +25,8 @@ public class CharacterMenu : MonoBehaviour
         else
         {
             currentCharacterSelection--;
-            if (currentCharacterSelection<0)
-                currentCharacterSelection = GameManager.instance.playerSprites.Count-1;
+            if (currentCharacterSelection < 0)
+                currentCharacterSelection = GameManager.instance.playerSprites.Count - 1;
             OnSelectionChange();
         }
     }
@@ -35,6 +35,7 @@ public class CharacterMenu : MonoBehaviour
     {
         characterSelectionSprite.sprite = GameManager.instance.playerSprites[currentCharacterSelection];
         GameManager.instance.player.spriteRenderer.sprite = characterSelectionSprite.sprite;
+        GameManager.instance.player.animator.runtimeAnimatorController = GameManager.instance.playerAnimation[currentCharacterSelection] as RuntimeAnimatorController;
     }
     public void OnBuyClick()
     {

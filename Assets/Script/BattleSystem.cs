@@ -74,8 +74,10 @@ public class BattleSystem : MonoBehaviour
                 state = State.BattleOver;
                 wallZone.SetActive(false);
                 wallZonemMinimap.SetActive(false);
-                Instantiate(chest, transform.position, Quaternion.identity);
-              //  Debug.Log("BattleOver");
+                if (chest == null) return;
+                else Instantiate(chest, transform.position, Quaternion.identity);
+
+                //  Debug.Log("BattleOver");
             }
         }
     }

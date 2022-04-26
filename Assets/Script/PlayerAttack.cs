@@ -86,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
                 player.currentWeapon.bullet[1].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x,direction.y-0.3f) * bulletForce; // velocity - van toc
                 player.currentWeapon.bullet[2].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, direction.y + 0.3f) * bulletForce; // velocity - van toc
 
-                Debug.Log(direction);
+                //Debug.Log(direction);
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate
 

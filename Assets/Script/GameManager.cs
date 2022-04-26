@@ -12,24 +12,26 @@ public class GameManager : MonoBehaviour
     public Player player;
     public PlayerHealthUI playerHealthUI;
     public GameObject canvas;
-    public GameObject pauseMenu;
+    public GameObject menuCanvas;
     public GameObject HUD;
     public FloatingTextManager floatingTextManager;
-   
+    public LevelSelection levelSelection;
     [Header("Camera Shake")]
     public CameraShake cameraShake;
     public float duration=0.4f;
     public float magnitude=0.15f;
-
     [Header("Boss")]
     public Slider bossHealthSlider;
-
     [Header("Currency")]
-    // int enemyCount = 0;
     public int coins;
     public bool haveKey=false;
-    [Header("Sprite")]
+    [Header("Characters Select")]
     public List<Sprite> playerSprites;
+    public RuntimeAnimatorController[] playerAnimation;
+    [Header("Victory Menu")]
+    public Text totalTime;
+    public Text goldCollected;
+
 
     //resources
 
@@ -41,17 +43,21 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+
+
         if (GameManager.instance != null)
         {
             Destroy(gameObject);
-         Destroy(player.gameObject);
-        Destroy(floatingTextManager.gameObject);
+            Destroy(player.gameObject);
+            Destroy(floatingTextManager.gameObject);
+            Destroy(cameraShake);
             return;
         }
          instance = this; // quan trong
-         playerHealthUI.SetMaxHealth(player.maxHitpoint);
 
-        
+
+        playerHealthUI.SetMaxHealth(player.maxHitpoint);
+
         cameraShake = FindObjectOfType<CameraShake>().GetComponent<CameraShake>();
 
         SceneManager.sceneLoaded += LoadState;
@@ -61,7 +67,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(player);
         DontDestroyOnLoad(cameraShake);
         DontDestroyOnLoad(HUD);
-        DontDestroyOnLoad(pauseMenu);
+        DontDestroyOnLoad(menuCanvas);
     }
 
     public void ShowText(string msg, int fontSize,  Color color, Vector3 position,Vector3 motion, float duration)
@@ -77,26 +83,8 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayerStats()
     {
-        player.maxHitpoint = 3;
+        player.maxHitpoint = 10;
         player.hitpoint = player.maxHitpoint;
-  //      player.playerProjectile.damagePoint = 1;
-
-    }
-    public void Respawn()
-    {
-        Hide();
-      //  SceneManager.LoadScene("PrepareRoom");
-        player.isAlive = true;
-        ResetPlayerStats();
-        ResetState();
-    }
-    public void ReturnMenu()
-    {
-        ResetPlayerStats();
-        ResetState();
-        Hide();
-        player.isAlive = true;
-    //    SceneManager.LoadScene("Menu");
     }
     /*
      * playerskin
@@ -115,12 +103,7 @@ public class GameManager : MonoBehaviour
     }
     public void ResetState()
     {
-        string s = "";
-        s += "0" + "|"; //skin
-        s += "0" + "|";// coin
-        // s += "0"; //hit point
-        PlayerPrefs.SetString("SaveState", s);
-        //  Debug.Log("ResetState");
+
     }
     public void LoadState(Scene s, LoadSceneMode mode)
     {
@@ -129,19 +112,10 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        /*      string[] data = PlayerPrefs.GetString("SaveState").Split('|');
-              // change player skin
-              coins = int.Parse(data[1]);
-              //experience
-              experience = int.Parse(data[2]);
-              if (GetCurrentLevel() != 1)
-                  player.SetLevel(GetCurrentLevel());
-              //change weapon level
-              weapon.SetWeaponLevel(weapon.weaponLevel = int.Parse(data[3]));*/
-        //  player.hitpoint = int.Parse(data[4]);
           Debug.Log("LoadState");
+//      PlayerPrefs.GetInt("Level");
+        levelSelection.UnlockLevel();
         if (!GameObject.Find("StartPoint")) return;
         player.transform.position = GameObject.Find("StartPoint").transform.position;
-
     }
 }

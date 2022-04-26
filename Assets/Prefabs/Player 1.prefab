@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 3679804149955519296}
   - component: {fileID: 349744528}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +321,8 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e2129bf438110204280069070c4487ec, type: 3}
+  m_Sprite: {fileID: -3163861510159893632, guid: d2da1f69eed849142a531a4d81e72519,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -370,7 +371,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.9375, y: 1.25}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -469,7 +470,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3679804149881056607}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 07da5fa100656c44581371e02cf8064f, type: 2}
   m_CullingMode: 0
@@ -493,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 0b22db93491bae04a8ed3d3b316b7289, type: 2}
-  duration: 0.1
+  duration: 0.125
 --- !u!1001 &3153793648461522606
 PrefabInstance:
   m_ObjectHideFlags: 0

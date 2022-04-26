@@ -39,6 +39,7 @@ public class Player : Creature
     private void Update()
     {
         if(isAlive) TakeInput();
+
     }
     void FixedUpdate() // co dinh
     {
@@ -97,9 +98,9 @@ public class Player : Creature
     protected override void Death()
     {
         isAlive = false;
-        Debug.Log("DEAD");
-      //  spriteRenderer.color = Color.black;
- //     GameManager.instance.deadMenuAnimator.SetTrigger("show");
+        //  spriteRenderer.color = Color.black;
+        GameManager.instance.menuCanvas.transform.GetChild(3).gameObject.SetActive(true);
+        Time.timeScale = 0f;
  //   audioSource.PlayOneShot(deadAudio);
     }
     /*    public void Respawn()   

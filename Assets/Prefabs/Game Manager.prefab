@@ -51,6 +51,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   HUD: {fileID: 0}
   floatingTextManager: {fileID: 0}
+  levelSelection: {fileID: 271993590}
   cameraShake: {fileID: 0}
   duration: 0.4
   magnitude: 0.15
@@ -62,6 +63,13 @@ MonoBehaviour:
   - {fileID: 8177203260375688589, guid: d2da1f69eed849142a531a4d81e72519, type: 3}
   - {fileID: -3163861510159893632, guid: d2da1f69eed849142a531a4d81e72519, type: 3}
   - {fileID: 4332630308760004205, guid: d2da1f69eed849142a531a4d81e72519, type: 3}
+  playerAnimation:
+  - {fileID: 9100000, guid: 07da5fa100656c44581371e02cf8064f, type: 2}
+  - {fileID: 9100000, guid: 18d03fb2fac365b47a4f7d0a9d78ed7d, type: 2}
+  - {fileID: 9100000, guid: 7d6dde78a9eaab1489122ed3b143a5c3, type: 2}
+  - {fileID: 9100000, guid: 0b202226f9b423340af030defcb17273, type: 2}
+  totalTime: {fileID: 0}
+  goldCollected: {fileID: 0}
 --- !u!114 &271993590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +89,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  SelectMenu: {fileID: 0}
 --- !u!114 &271993593
 MonoBehaviour:
   m_ObjectHideFlags: 0
