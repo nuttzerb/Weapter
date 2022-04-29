@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2879734061169123661}
   - component: {fileID: 2879734061169123698}
   - component: {fileID: 125644703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BatEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b40fcc67c23ff41aad298331f68f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 0}
   hitpoint: 0
   maxHitpoint: 10
   speed: 3

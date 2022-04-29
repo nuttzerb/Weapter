@@ -83,8 +83,9 @@ public class GameManager : MonoBehaviour
 
     public void ResetPlayerStats()
     {
-        player.maxHitpoint = 10;
         player.hitpoint = player.maxHitpoint;
+        playerHealthUI.SetMaxHealth(player.maxHitpoint);
+        player.isAlive=true;
     }
     /*
      * playerskin

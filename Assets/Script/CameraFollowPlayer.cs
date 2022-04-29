@@ -7,10 +7,10 @@ public class CameraFollowPlayer : MonoBehaviour
     private Transform player;
     public float smoothing;
     public Vector3 offset;
+
     private void Start()
     {
-         player = GameObject.Find("Player").transform;
-
+        player = GameObject.Find("Player").transform;
     }
 
     private void FixedUpdate()

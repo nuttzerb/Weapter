@@ -78,14 +78,19 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Time.time >= nextTimeOffFire)
             {
+                float ran = Random.Range(-.5f, .5f);
                 player.currentWeapon.Shoot(3);
                 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); // lay vi tri chuot
                 myPos = transform.position;
                 direction = (mousePos - myPos).normalized;
                 player.currentWeapon.bullet[0].GetComponent<Rigidbody2D>().velocity =  direction* bulletForce; // velocity - van toc
-                player.currentWeapon.bullet[1].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x,direction.y-0.3f) * bulletForce; // velocity - van toc
-                player.currentWeapon.bullet[2].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, direction.y + 0.3f) * bulletForce; // velocity - van toc
-
+                mousePos += new Vector2(ran, ran);
+                direction = (mousePos - myPos).normalized;
+                player.currentWeapon.bullet[1].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, direction.y - .3f) * bulletForce; // velocity - van toc
+                mousePos += new Vector2(ran, ran);
+                direction = (mousePos - myPos).normalized;
+                player.currentWeapon.bullet[2].GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, direction.y + .3f) * bulletForce; // velocity - van toc
+                
                 //Debug.Log(direction);
 
                 nextTimeOffFire = Time.time + player.currentWeapon.fireRate; //firerate

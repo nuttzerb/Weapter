@@ -15,12 +15,12 @@ MonoBehaviour:
   currentWeaponSprite: {fileID: 21300000, guid: 93b6278c7cc4fad4ab4d01279d8a2768,
     type: 3}
   weaponType: 0
-  damage: 20
+  damage: 70
   bulletPrefab: {fileID: 0}
   bullet:
   - {fileID: 0}
   fireRate: 1
-  attackRange: 0.3
+  attackRange: 0.5
   arrowPrefab: {fileID: 0}
   arrowGFX: {fileID: 0}
   bowCharge: {fileID: 0}
