@@ -46,6 +46,7 @@ public class MenuCanvas : MonoBehaviour
         SelectMenuUI.SetActive(false);
         victoryMenu.SetActive(false);
         deadMenu.SetActive(false);
+        GameManager.instance.bossHealthSlider.gameObject.SetActive(false);
         GameManager.instance.ResetPlayerStats();
 
         SceneManager.LoadScene("Menu");
@@ -72,11 +73,13 @@ public class MenuCanvas : MonoBehaviour
         deadMenu.SetActive(false);
         Time.timeScale = 1f;
         GameManager.instance.ResetPlayerStats();
+        GameManager.instance.bossHealthSlider.gameObject.SetActive(false);
         SceneManager.LoadScene(1);
     }
     public void Retry()
     {
         GameManager.instance.ResetPlayerStats();
+        GameManager.instance.bossHealthSlider.gameObject.SetActive(false);
         deadMenu.SetActive(false);
         Time.timeScale = 1f;
         GameManager.instance.ResetPlayerStats();

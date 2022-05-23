@@ -224,7 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb06f9eb4c15d224fb2d6621af052fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 0}
   hitpoint: 0
   maxHitpoint: 140
   speed: 3
@@ -303,6 +302,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MinimapIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408095957171400857, guid: 202d83e89426ef149ab11eb7c1c66d86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 202d83e89426ef149ab11eb7c1c66d86, type: 3}

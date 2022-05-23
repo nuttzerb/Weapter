@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] SpriteRenderer arrowGFX;*/
     [SerializeField] Slider bowPowerSlider;
     [SerializeField] Transform bow;
-
+    [SerializeField] Vector3 offsetSlider;
    // [Range(50, 70)]
    // [SerializeField] float bowPower;
     [Range(0, 3)]
@@ -204,7 +204,7 @@ public class PlayerAttack : MonoBehaviour
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
         myPos = transform.position;
         direction = (mousePos - myPos).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; 
         Quaternion rot = Quaternion.Euler(new Vector3(0f, 0f, angle-90));
         //
         //arrow

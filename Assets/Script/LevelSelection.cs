@@ -8,39 +8,33 @@ using UnityEngine.UI;
 public class LevelSelection : MonoBehaviour
 {
     public Button[] lvlButton;
-    int level;
-    int reachedLevel = 1;
+    public int level;
     [SerializeField] GameObject SelectMenu;
-    void Awake()
-    {
-        // two key: Reached Level and Level
-        //Reached level tang theo level
-        // Level tang dan
-        //UnlockLevel();
-        if (reachedLevel == 0) level = PlayerPrefs.GetInt("Level", 2);
-        else reachedLevel = level;
-        Debug.Log(reachedLevel);
 
+    private void Start()
+    {
+        PlayerPrefs.GetInt("reachedLevel", 2);
+        UnlockLevel(PlayerPrefs.GetInt("reachedLevel"));
     }
-    private void Update()
+    public void UnlockLevel(int level)
     {
-
-    }
-    public void UnlockLevel()
-    {
-
         for (int i = 0; i < lvlButton.Length; i++)
         {
-            if (i + 2 > reachedLevel)
+            if (i + 2 > level)
             {
                 lvlButton[i].interactable = false;
+            }
+            else
+            {
+                lvlButton[i].interactable = true;
             }
         }
     }
     public void LoadScene(int level)
     {
-      //  PlayerPrefs.SetInt("Level", level);
         SceneManager.LoadScene(level);
+        GameManager.instance.ResetPlayerStats();
+        GameManager.instance.bossHealthSlider.gameObject.SetActive(false);
         SelectMenu.SetActive(false);
         Time.timeScale = 1f;
     }

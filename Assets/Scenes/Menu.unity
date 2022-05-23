@@ -216,17 +216,22 @@ PrefabInstance:
     - target: {fileID: 7018788531738304764, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 454.5
+      value: 572.3
       objectReference: {fileID: 0}
     - target: {fileID: 7018788531738304764, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -445
+      value: -403
       objectReference: {fileID: 0}
     - target: {fileID: 7018788531738304764, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 202
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018788531738304765, guid: 5e142d57f7ac560459366dfe065dd65e,
+        type: 3}
+      propertyPath: m_Text
+      value: WEAPTER
       objectReference: {fileID: 0}
     - target: {fileID: 7018788531854935121, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}
@@ -371,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 7018788533160777192, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -252
+      value: -98
       objectReference: {fileID: 0}
     - target: {fileID: 7018788533296554500, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}
@@ -417,6 +422,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7018788533820270025, guid: 5e142d57f7ac560459366dfe065dd65e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -240
       objectReference: {fileID: 0}
     - target: {fileID: 7018788533820270030, guid: 5e142d57f7ac560459366dfe065dd65e,
         type: 3}

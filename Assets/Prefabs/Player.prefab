@@ -392,9 +392,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitpoint: 9
-  maxHitpoint: 9
+  maxHitpoint: 10
   speed: 6
   spriteRenderer: {fileID: 3679804149881056606}
+  playerHealthUI: {fileID: 3679804149955519295}
   dashRange: 10
   timeBetweenDash: 0.5
   isAlive: 1
@@ -432,6 +433,7 @@ MonoBehaviour:
   pushForce: 0.4
   bowPowerSlider: {fileID: 0}
   bow: {fileID: 131647452}
+  offsetSlider: {x: 0, y: 1, z: 0}
   maxBowCharge: 1
   arrowSpeed: 20
 --- !u!114 &3679804149955519295

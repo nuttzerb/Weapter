@@ -17,10 +17,7 @@ public class Boss : Enemy
     [Header("Spin")]
     [SerializeField] float SpinMoveSpeed;
     [SerializeField] Vector2 spinMoveDirection;
-    //Attack Up N Down
-    [Header("AttackUpNDown")]
-    [SerializeField] float attackMoveSpeed;
-    [SerializeField] Vector2 attackMoveDirection;
+
     //Attack Player
     [Header("AttackPlayer")]
     [SerializeField] float attackPlayerSpeed;
@@ -58,7 +55,6 @@ public class Boss : Enemy
         base.Start();
         GameManager.instance.bossHealthSlider.gameObject.SetActive(true);
         spinMoveDirection.Normalize();
-        attackMoveDirection.Normalize();
         rb = GetComponent<Rigidbody2D>();
         StartCoroutine(ShootCircle(firePointsCirle.Length));
         StartCoroutine(ShootToward(firePointsToward.Length));
@@ -138,7 +134,7 @@ public class Boss : Enemy
     }
     private void BossMechanic()
     {
-        float firstHealth = maxHitpoint*2/3;
+        float firstHealth = maxHitpoint*1/2;
         float secondHealth = maxHitpoint*1/5;
         if (canMove == true) animator.SetTrigger("Walk");
 
@@ -183,7 +179,6 @@ public class Boss : Enemy
     {
         facingLeft = !facingLeft;
         spinMoveDirection.x *= -1;
-        attackMoveDirection.x *= -1;
         transform.Rotate(0, 180, 0);
     }
     void SpinState()
@@ -210,7 +205,6 @@ public class Boss : Enemy
     {
         goingUp = !goingUp;
         spinMoveDirection.y *= -1;
-        attackMoveDirection.y *= -1;
     }
     private void OnDrawGizmos()
     {

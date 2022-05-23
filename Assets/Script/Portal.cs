@@ -11,33 +11,30 @@ public class Portal : MonoBehaviour
     private void Start()
     {
         nextSceneLoad = SceneManager.GetActiveScene().buildIndex + 1;
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag=="Player")
         {
-            if (nextSceneLoad >= PlayerPrefs.GetInt("Level"))
+            if (nextSceneLoad > PlayerPrefs.GetInt("reachedLevel"))
             {
-                PlayerPrefs.SetInt("Level", nextSceneLoad);
-
+                GameManager.instance.levelSelection.UnlockLevel(SceneManager.GetActiveScene().buildIndex + 1);
+                PlayerPrefs.SetInt("reachedLevel", nextSceneLoad);
+               
             }
-            if(nextSceneLoad < SceneManager.sceneCountInBuildSettings)
+            if (nextSceneLoad < SceneManager.sceneCountInBuildSettings)
             {
                 SceneManager.LoadScene(nextSceneLoad);
+                GameManager.instance.gameHandler.SaveData(SceneManager.GetActiveScene().buildIndex + 1); 
             }
             if (SceneManager.sceneCountInBuildSettings== SceneManager.GetActiveScene().buildIndex+1)
             {
                 ShowVictoryMenu();
             }
-
-
             GameManager.instance.SaveState();
-
-
-
         }
     }
-
     private static void ShowVictoryMenu()
     {
         GameManager.instance.totalTime.text = Time.time.ToString();

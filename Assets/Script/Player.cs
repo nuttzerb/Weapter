@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Creature
-{   
+{
+    public PlayerHealthUI playerHealthUI;
     [Header("Dash")]
     public float dashRange = 50f;
     public float timeBetweenDash = 1f;
@@ -33,6 +34,7 @@ public class Player : Creature
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        playerHealthUI.SetMaxHealth(maxHitpoint);
         transform.position = GameObject.FindGameObjectWithTag("StartPoint").transform.position;
         //  DontDestroyOnLoad(gameObject);
     }
@@ -97,20 +99,28 @@ public class Player : Creature
 */
     protected override void Death()
     {
+        //   audioSource.PlayOneShot(deadAudio);
+        Invoke("ShowDeathMenu", 1f);
+
+    }
+
+    private void ShowDeathMenu()
+    {
         isAlive = false;
         //  spriteRenderer.color = Color.black;
+
         GameManager.instance.menuCanvas.transform.GetChild(3).gameObject.SetActive(true);
         Time.timeScale = 0f;
- //   audioSource.PlayOneShot(deadAudio);
     }
-    /*    public void Respawn()   
-        {
-            isAlive = true;
-            lastImmune = Time.time;
-            pushDirection = Vector3.zero;
-            boxCollider2D.enabled = true;
 
-        }*/
+    /*    public void Respawn()   
+   {
+       isAlive = true;
+       lastImmune = Time.time;
+       pushDirection = Vector3.zero;
+       boxCollider2D.enabled = true;
+
+   }*/
     public void Heal(int healingAmount)
     {
         if (hitpoint == maxHitpoint)
@@ -122,7 +132,7 @@ public class Player : Creature
         {
             hitpoint = maxHitpoint;
         }
-        GameManager.instance.playerHealthUI.SetHealth(hitpoint);
+        playerHealthUI.SetHealth(hitpoint);
         GameManager.instance.ShowText("+" + healingAmount.ToString() + "hp", 25, Color.red, transform.position, Vector3.up * 30, 0.7f);
 
 
@@ -131,7 +141,7 @@ public class Player : Creature
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
-        GameManager.instance.playerHealthUI.SetHealth(hitpoint); // xem lai sau
+        playerHealthUI.SetHealth(hitpoint); // xem lai sau
         flashEffect.Flash();
     }
 }

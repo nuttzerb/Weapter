@@ -633,7 +633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2e842de0473864090ede5f5e8a904a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 0}
   hitpoint: 0
   maxHitpoint: 1000
   speed: 0.7

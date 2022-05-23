@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3820711966388350956}
   - component: {fileID: 271993590}
   - component: {fileID: 271993593}
+  - component: {fileID: 1121024598}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -48,7 +49,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerHealthUI: {fileID: 0}
   canvas: {fileID: 0}
-  pauseMenu: {fileID: 0}
+  menuCanvas: {fileID: 0}
   HUD: {fileID: 0}
   floatingTextManager: {fileID: 0}
   levelSelection: {fileID: 271993590}
@@ -89,7 +90,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  level: 0
   SelectMenu: {fileID: 0}
+  gameHandler: {fileID: 0}
 --- !u!114 &271993593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,5 +103,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 495c62db8b39175489d374d22e7fa02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1121024598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3820711966388350931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9da54e6c1bb81146a4cbe2ee5db9232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

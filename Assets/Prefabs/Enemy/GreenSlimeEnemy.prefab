@@ -165,10 +165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b40fcc67c23ff41aad298331f68f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatingTextPrefab: {fileID: 0}
   hitpoint: 0
   maxHitpoint: 40
-  speed: 2
+  speed: 4
   spriteRenderer: {fileID: 0}
   player: {fileID: 0}
   lootDrop: {fileID: 0}
@@ -244,6 +243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MinimapIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408095957171400857, guid: 202d83e89426ef149ab11eb7c1c66d86,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 202d83e89426ef149ab11eb7c1c66d86, type: 3}
